@@ -16,4 +16,17 @@
 		<list key="textArray">
 		</list>
 	</section>
+	<section name="ImportExportAction">
+		<item value="org.eclipse.ui.wizards.import.ZipFile" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
+		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
+			<item value="org.eclipse.ui.Basic"/>
+			<item value="org.eclipse.pde.ui.PluginDevelopment"/>
+		</list>
+	</section>
+	<section name="ZipFileImportWizard">
+		<item value="false" key="WizardZipFileResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID"/>
+		<list key="WizardZipFileResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="D:\Usuario\Documents\Facultad\Concurrente\Trabajo Final 2017\ConcurrenteFinal\Fabrica Concurrente\jsoup-1.6.0.jar"/>
+		</list>
+	</section>
 </section>

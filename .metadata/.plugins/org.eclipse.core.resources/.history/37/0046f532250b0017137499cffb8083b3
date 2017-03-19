@@ -1,0 +1,5 @@
+package Instrumentos;
+
+public abstract class Instrumento {
+
+}

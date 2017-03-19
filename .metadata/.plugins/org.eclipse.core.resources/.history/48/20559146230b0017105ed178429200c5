@@ -1,0 +1,24 @@
+package Monitor;
+import java.util.ArrayList;
+
+public class RDP {
+	public int[][] marcado;
+	
+	
+	public RDP(int[][] marcadoInicial){
+		this.marcado = marcadoInicial;
+	}
+	
+	public ArrayList<Integer> sensibilizadas(){
+		
+		
+		ArrayList<Integer> sensibilizadas = new ArrayList<>();
+		
+		return sensibilizadas;
+	}
+	
+	public void disparar(){
+		
+		
+	}
+}

@@ -1,0 +1,8 @@
+package Maquinas;
+
+public class Maquina {
+	
+	public Maquina(){
+		
+	}
+}

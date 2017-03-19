@@ -6,4 +6,8 @@
 <fullyQualifiedTypeName name="Monitor.Mutex"/>
 <fullyQualifiedTypeName name="Instrumentos.Instrumento"/>
 <fullyQualifiedTypeName name="java.util.concurrent.Semaphore"/>
+<fullyQualifiedTypeName name="Extra.LeerArchivo"/>
+<fullyQualifiedTypeName name="Monitor.RDP"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
 </qualifiedTypeNameHistroy>

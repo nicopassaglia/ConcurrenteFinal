@@ -1,0 +1,16 @@
+package Robots;
+
+public class Robot {
+	
+	public Robot(){
+		
+	}
+	
+	public void extraccion(){
+		
+	}
+	
+	public void deposito(){
+		
+	}
+}
