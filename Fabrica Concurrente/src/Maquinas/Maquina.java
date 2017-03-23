@@ -2,7 +2,7 @@ package Maquinas;
 
 import Instrumentos.Instrumento;
 
-public class Maquina extends Instrumento {
+public class Maquina extends Instrumento{
 	
 	public Maquina(){
 		super();
@@ -13,6 +13,8 @@ public class Maquina extends Instrumento {
 		// TODO Auto-generated method stub
 		
 	}
+
+
 
 	
 	

@@ -1,6 +1,8 @@
 package Monitor;
 import java.util.ArrayList;
 
+import Extra.Matriz;
+
 public class RDP {
 	
 	public int[][] marcado;
@@ -11,10 +13,27 @@ public class RDP {
 		this.incidencia = incidencia;
 	}
 	
-	public ArrayList<Integer> sensibilizadas(){
+	public Matriz sensibilizadas(){
 		
+		Matriz marcadoM = new Matriz(this.marcado).transpose();
+		Matriz incidenciaM = new Matriz(this.incidencia);
+		Matriz sensibilizadas = new Matriz(incidenciaM.getColCount(),1);
+		Matriz incidenciaNueva = incidenciaM.productoPorEscalar(-1);
 		
-		ArrayList<Integer> sensibilizadas = new ArrayList<>();
+		for(int i=0;i<incidenciaM.getColCount();i++){
+			int transicion = 1;
+			for(int j=0;j<marcadoM.getFilCount();j++){
+				
+					if(marcadoM.getVal(j, 0)>=incidenciaNueva.getVal(j, i)){
+						continue;
+					}else{
+						transicion = 0;
+						break;
+					}
+			}
+			sensibilizadas.setDato(i, 0, transicion);
+		}
+		
 		
 		return sensibilizadas;
 	}

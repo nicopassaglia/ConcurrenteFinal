@@ -11,11 +11,13 @@ public class GestorDeMonitor {
 	
 	
 	
-	public GestorDeMonitor(){
+	public GestorDeMonitor(Colas colas, Politicas politicas, RDP rdp){
 		
 		this.mutex = new Semaphore(1,true);
-		
-	}
+		this.colas = colas;
+		this.politicas = politicas;
+		this.rdp = rdp;
+	}	
 	
 	
 	
