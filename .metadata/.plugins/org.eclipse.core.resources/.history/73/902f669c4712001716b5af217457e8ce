@@ -1,0 +1,45 @@
+package Maquinas;
+
+import Extra.Matriz;
+import Instrumentos.Instrumento;
+import Monitor.GestorDeMonitor;
+
+public class Maquina extends Instrumento implements Runnable{
+	private GestorDeMonitor gdm;
+	public Maquina(GestorDeMonitor gdm){
+		super();
+		
+		this.gdm = gdm;
+	
+	}
+
+	@Override
+	public void Disparar(int transicion) {
+		// TODO Auto-generated method stub
+		gdm.Disparar(transicion);
+		System.out.println("Me dispare " + this.getClass().getName());
+		
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		try {
+			Disparar();
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+
+
+	
+	
+
+
+
+}

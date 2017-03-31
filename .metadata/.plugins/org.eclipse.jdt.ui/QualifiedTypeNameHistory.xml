@@ -4,10 +4,20 @@
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="Maquinas.Maquina"/>
 <fullyQualifiedTypeName name="Monitor.Mutex"/>
-<fullyQualifiedTypeName name="Instrumentos.Instrumento"/>
 <fullyQualifiedTypeName name="java.util.concurrent.Semaphore"/>
 <fullyQualifiedTypeName name="Extra.LeerArchivo"/>
 <fullyQualifiedTypeName name="Monitor.RDP"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="Maquinas.Maquina_1"/>
+<fullyQualifiedTypeName name="Maquinas.Maquina_2"/>
+<fullyQualifiedTypeName name="Maquinas.Maquina_3"/>
+<fullyQualifiedTypeName name="Robots.Robot_1"/>
+<fullyQualifiedTypeName name="Robots.Robot_2"/>
+<fullyQualifiedTypeName name="Robots.Robot_3"/>
+<fullyQualifiedTypeName name="Monitor.GestorDeMonitor"/>
+<fullyQualifiedTypeName name="Instrumentos.Instrumento"/>
+<fullyQualifiedTypeName name="Maquinas.Maquina_4"/>
+<fullyQualifiedTypeName name="java.lang.Long"/>
+<fullyQualifiedTypeName name="Extra.Matriz"/>
 </qualifiedTypeNameHistroy>

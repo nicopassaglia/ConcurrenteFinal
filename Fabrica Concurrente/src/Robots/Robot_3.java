@@ -12,6 +12,12 @@ public class Robot_3 extends Robot {
 	public void deposito(Maquina M){
 			
 	}
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
 }
 
 	

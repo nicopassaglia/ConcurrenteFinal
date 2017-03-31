@@ -1,0 +1,31 @@
+package Robots;
+
+import Instrumentos.Instrumento;
+
+public class Robot extends Instrumento implements Runnable {
+	
+	public Robot(){
+		super();
+	}
+	
+	public void extraccion(){
+		System.out.println("Se extrajo");
+	}
+	
+	public void deposito(){
+		System.out.println("Se depositó");
+	}
+	
+
+	@Override
+	public void DispararElemento() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+}

@@ -10,6 +10,7 @@ public class Colas {
 	private Matriz arregloEstan;
 	
 	public Colas(int transiciones){
+		arregloColas = new Cola[transiciones];
 		this.arregloEstan = new Matriz(transiciones,1);
 		for(int i=0; i<transiciones; i++){
 			arregloColas[i]=new Cola("Cortesia");
@@ -17,7 +18,7 @@ public class Colas {
 		}
 	}
 	
-	public void acquire(int transicion, Runnable proceso){
+	public synchronized void acquire(int transicion, Runnable proceso){
 		arregloColas[transicion].meterEnCola(proceso);
 		arregloEstan.setDato(transicion, 0, 1);
 		//arregloEstan[transicion]=true;

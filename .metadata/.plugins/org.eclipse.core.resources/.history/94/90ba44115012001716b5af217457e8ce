@@ -1,0 +1,117 @@
+import java.util.HashMap;
+
+import Extra.LeerArchivo;
+import Extra.Matriz;
+import Maquinas.Maquina_1;
+import Maquinas.Maquina_2;
+import Maquinas.Maquina_3;
+import Monitor.Colas;
+import Monitor.GestorDeMonitor;
+import Monitor.Politicas;
+import Monitor.RDP;
+import Robots.Robot_1;
+import Robots.Robot_2;
+import Robots.Robot_3;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		LeerArchivo oArchivo = new LeerArchivo();
+        HashMap<String,int[][]> datos = oArchivo.LeerHTML();
+        RDP rdp = new RDP(datos.get("marcado"),datos.get("incidencia"));
+        
+        Politicas politicas = new Politicas();
+        
+        
+        
+        int[][] incidenciaRDP = rdp.getIncidencia();
+        int[][] marcadoRDP = rdp.getMarcado();
+        
+        
+        Matriz incidencia = new Matriz(incidenciaRDP);
+        Matriz marcado = new Matriz(marcadoRDP);
+        Matriz sensibilizadas = rdp.sensibilizadas();     
+        
+        Colas colas = new Colas(incidencia.getColCount());
+        
+        GestorDeMonitor gdm = new GestorDeMonitor(colas,politicas,rdp);
+        
+        Matriz quienesEstan = colas.quienesEstan();
+        //HILOS
+        Maquina_1 m1 = new Maquina_1(gdm);
+        Thread hilo_maq_1 = new Thread(m1);
+        
+        Maquina_2 m2 = new Maquina_2(gdm);
+        Thread hilo_maq_2 = new Thread(m2);
+        
+        Maquina_3 m3 = new Maquina_3(gdm);
+        Thread hilo_maq_3 = new Thread(m3);
+        
+        Robot_1 r1 = new Robot_1();
+        Thread hilo_rob_1 = new Thread(r1);
+        
+        Robot_2 r2= new Robot_2();
+        Thread hilo_rob_2 = new Thread(r2);
+        
+        Robot_3 r3 = new Robot_3();
+        Thread hilo_rob_3 = new Thread(r3);
+        
+        /*colas.acquire(5, m3);
+        colas.acquire(13, m1);*/
+        
+        m3.transicion = 5;
+        m1.transicion = 13;
+        sensibilizadas.imprimirMatriz();
+        
+        
+        
+        
+        
+        int  x = 0;
+        while(x<0){
+        	/*quienesEstan.imprimirMatriz();
+        	System.out.println("::::::::::::::::");*/
+        	
+        	Matriz and = sensibilizadas.AND(quienesEstan);
+        	
+        	int proceso = politicas.cual(and);
+        	
+        	if(proceso != -1){
+        		
+        		
+        		//cambiar marcado
+        		
+        		marcado = rdp.getMarcadoM();
+        		sensibilizadas = rdp.sensibilizadas();
+        		
+        		
+        		
+        		
+        		
+        		
+        	}else{
+        		System.out.println("No hay procesos");
+        	}
+        	
+        	
+        	
+        	x++;
+        	
+        }
+        /*
+        }*/
+       /* incidencia.imprimirMatriz();
+        System.out.println("\n");
+       /* marcado.imprimirMatriz();
+        System.out.println("\n");
+        and.imprimirMatriz();
+        System.out.println("\n");*/
+        /*marcado.transpose().imprimirMatriz();
+        System.out.println("\n");*/
+     
+		
+	}
+
+}

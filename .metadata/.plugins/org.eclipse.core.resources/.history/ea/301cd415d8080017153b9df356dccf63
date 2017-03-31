@@ -1,9 +1,0 @@
-
-public class GestorDeMonitor {
-	public GestorDeMonitor(){
-		
-	}
-	public int puto(){
-		return 4;
-	}
-}

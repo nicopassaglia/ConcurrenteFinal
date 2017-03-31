@@ -1,0 +1,57 @@
+package Monitor;
+
+import java.util.concurrent.Semaphore;
+
+import Instrumentos.Instrumento;
+
+public class GestorDeMonitor {
+	
+	public Colas colas;
+	public Semaphore mutex;
+	public Politicas politicas;
+	public RDP rdp;
+	
+	
+	
+	public GestorDeMonitor(Colas colas, Politicas politicas, RDP rdp){
+		
+		this.mutex = new Semaphore(1,true);
+		this.colas = colas;
+		this.politicas = politicas;
+		this.rdp = rdp;
+	}
+	
+	public void Disparar(int transicion, Instrumento proceso){
+		if(mutex.tryAcquire()){
+			System.out.println("pude " + proceso.getClass().getName());
+		}
+		else{
+			System.out.println("not yet "  + proceso.getClass().getName());
+		}
+		try {
+			mutex.acquire();
+			
+			try{
+				colas.release(transicion);
+				proceso.DispararElemento();
+				rdp.nuevoMarcado(transicion);
+			}finally{
+				mutex.release();
+			}
+			
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		
+			System.out.println("MUTEX USANDOSE");
+		}
+	
+		
+	}
+		
+	
+	
+	
+	
+	
+}

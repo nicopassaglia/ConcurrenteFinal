@@ -1,0 +1,14 @@
+package Maquinas;
+
+import Extra.Matriz;
+import Monitor.GestorDeMonitor;
+
+public class Maquina_3 extends Maquina {
+	private Matriz secuencia;
+	public Maquina_3(GestorDeMonitor gdm){
+		super(gdm);
+	}
+	
+	
+
+}	
