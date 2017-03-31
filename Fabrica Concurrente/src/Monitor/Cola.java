@@ -8,7 +8,6 @@ public class Cola {
 	private String tipoCola;
 
 	public Cola(String tipo){
-	
 		this.tipoCola = tipo;
 		this.fifo =  new LinkedList<>();
 	
@@ -27,10 +26,10 @@ public class Cola {
 	
 	}
 	
-	public boolean meterEnCola(Runnable proceso){
+	public boolean meterEnCola(Thread proceso){
 	
 		try {
-			//proceso.wait();
+			proceso.wait();
 			return fifo.add(proceso);
 		} catch (Exception e ) {
 			// TODO Auto-generated catch block

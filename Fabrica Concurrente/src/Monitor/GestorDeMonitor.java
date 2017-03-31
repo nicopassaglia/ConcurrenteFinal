@@ -22,9 +22,10 @@ public class GestorDeMonitor {
 		this.rdp = rdp;
 	}
 
-	public void Disparar(int transicion, Instrumento proceso){
+	public void Disparar(int transicion, Thread proceso){
 		boolean k;
-		Matriz sensi;
+		Matriz sensiViejas;
+		Matriz sensiNuevas;
 		Matriz quienes;
 		Matriz and;
 		int cual;
@@ -34,11 +35,12 @@ public class GestorDeMonitor {
 			mutex.acquire();
 			k=true;
 			while(k){
+				sensiViejas = rdp.sensibilizadas();
 				k = rdp.disparar(transicion);
 				if(k){
-					sensi=rdp.sensibilizadas();
+					sensiNuevas=rdp.sensibilizadas();
 					quienes = colas.quienesEstan();
-					and = sensi.AND(quienes);
+					and = sensiNuevas.AND(quienes);
 					cual = politicas.cual(and);
 
 					if(cual != -1){
@@ -54,9 +56,9 @@ public class GestorDeMonitor {
 					//para mi esto tiene que ser sincronizado??
 					//pregunta
 					mutex.release();
-					colas.acquire(transicion, (Runnable)proceso);
+					colas.acquire(transicion, proceso);
 					//colas.acquire debe ser sincronizado
-					
+
 				}
 				mutex.release();
 			}

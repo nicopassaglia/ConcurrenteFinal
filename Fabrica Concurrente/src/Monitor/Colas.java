@@ -18,7 +18,7 @@ public class Colas {
 		}
 	}
 	
-	public synchronized void acquire(int transicion, Runnable proceso){
+	public synchronized void acquire(int transicion, Thread proceso){
 		arregloColas[transicion].meterEnCola(proceso);
 		arregloEstan.setDato(transicion, 0, 1);
 		//arregloEstan[transicion]=true;
