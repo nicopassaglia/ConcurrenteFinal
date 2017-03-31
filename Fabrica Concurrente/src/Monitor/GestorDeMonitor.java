@@ -22,7 +22,7 @@ public class GestorDeMonitor {
 		this.rdp = rdp;
 	}
 
-	public void Disparar(int transicion, Thread proceso){
+	public Integer Disparar(int transicion, Thread proceso){
 		boolean k;
 		Matriz sensiViejas;
 		Matriz sensiNuevas;
@@ -45,7 +45,7 @@ public class GestorDeMonitor {
 
 					if(cual != -1){
 						colas.release(cual);
-						return;
+						return null;
 						//pregunta
 					}
 					else{
