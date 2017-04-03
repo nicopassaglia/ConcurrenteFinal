@@ -1,0 +1,81 @@
+package Monitor;
+
+import Extra.Matriz;
+
+public class PoliticasLlamar {
+	
+	
+	private Matriz registros;
+	
+	public PoliticasLlamar(int cantidadTransiciones){
+		registros = new Matriz(cantidadTransiciones,1);
+		
+		for(int i=0;i<cantidadTransiciones;i++){
+			registros.setDato(i,0 , 1);
+		}
+	}
+	
+	public int quienLlamo(Matriz sensiViejas, Matriz sensiNuevas){
+		int llamo=0;
+		Matriz resta;
+		
+		resta = sensiNuevas.minus(sensiViejas);
+		
+		
+		// crear metodo que sea un and y una multiplicacion 
+		//resta.mult(registros);
+		
+		resta = resta.multAnd(registros);
+		
+		//dsp se llama un metodo que encuentre el menor numero mayor a 0 y llamarlo
+		llamo = menorNumMayorCero(resta);
+		
+		registros.setDato(llamo, 0, registros.getVal(llamo, 0)+1);
+		//antes de return sumo 1 a la transicion que devuelvo en la matriz registro
+		// return al numero de transicion.
+		
+		
+		
+		return llamo;
+		
+	}
+	
+	public int menorNumMayorCero(Matriz A){
+		int menor=1000;
+		int devolver = -1;
+		Matriz local = new Matriz(A.getFilCount(),2);
+		int t = 0;
+		/*for(int i=0;i<A.getFilCount();i++){
+			for(int j=0;j<A.getColCount();j++){
+				if(A.getVal(i, j)>0){
+					local.setDato(t, 0, i);
+					local.setDato(t, 1, j);
+					t++;
+				}
+				
+			}
+		}*/
+		
+		for(int i=0;i<A.getFilCount();i++){
+			for(int j=0;j<A.getColCount();j++){
+				if(menor > A.getVal(i, j)){
+					
+					if(A.getVal(i, j)>0){
+						menor = A.getVal(i,j);
+						devolver = i;
+								
+							
+					
+				}
+			}
+		}
+		}
+		
+		
+		
+		
+		return devolver;
+	}
+}
+	
+

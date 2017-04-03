@@ -204,6 +204,46 @@ public class Matriz
     }
     
     
+    public Matriz multAnd(Matriz B){
+    	Matriz A = this;
+        Matriz oMand = new Matriz(B.getFilCount(), B.getColCount());
+        
+         for (int i = 0; i < A.getFilCount(); i++) {
+            for (int j = 0; j < A.getColCount(); j++) {
+               oMand.setDato(i, j, B.getVal(i, j)*A.getVal(i, j));
+            }            
+        }
+         return oMand;
+    }
+    
+    
+    public int menorNumMayorCero(){
+		int menor=1000;
+		int devolver = -1;
+		Matriz A = this;
+		
+		
+		for(int i=0;i<A.getFilCount();i++){
+			for(int j=0;j<A.getColCount();j++){
+				if(menor > A.getVal(i, j)){
+					
+					if(A.getVal(i, j)>0){
+						menor = A.getVal(i,j);
+						devolver = i;
+								
+							
+					
+				}
+			}
+		}
+		}
+		
+		
+		
+		
+		return devolver;
+	}
+    
     
  
 }

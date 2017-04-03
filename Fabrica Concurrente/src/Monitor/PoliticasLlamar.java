@@ -25,10 +25,12 @@ public class PoliticasLlamar {
 		// crear metodo que sea un and y una multiplicacion 
 		//resta.mult(registros);
 		
+		resta = resta.multAnd(registros);
+		
 		//dsp se llama un metodo que encuentre el menor numero mayor a 0 y llamarlo
+		llamo =resta.menorNumMayorCero();
 		
-		
-		
+		registros.setDato(llamo, 0, registros.getVal(llamo, 0)+1);
 		//antes de return sumo 1 a la transicion que devuelvo en la matriz registro
 		// return al numero de transicion.
 		
@@ -37,4 +39,8 @@ public class PoliticasLlamar {
 		return llamo;
 		
 	}
+	
+	
 }
+	
+

@@ -1,0 +1,39 @@
+package Testing;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import Extra.Matriz;
+
+public class UnitTestMatriz {
+
+	
+	
+	@Test
+	public void SumaMatrices(){
+		Matriz A = new Matriz(1,1);
+		Matriz B = new Matriz(1,1);
+		
+		A.setDato(0, 0, 1);
+		B.setDato(0, 0, 2);
+		
+		Matriz C = new Matriz(1,1);
+		C.setDato(0, 0, 3);
+		
+		assertEquals(C.getVal(0, 0),A.plus(B).getVal(0, 0));
+	}
+	
+	public void multAndMatrices(){
+		Matriz A = new Matriz(1,1);
+		Matriz B = new Matriz(1,1);
+		
+		A.setDato(0, 0, 5);
+		B.setDato(0, 0, 2);
+		
+		Matriz C = new Matriz(1,1);
+		C.setDato(0, 0, 10);
+		
+		assertEquals(C.getVal(0, 0),A.plus(B).getVal(0, 0));
+	}
+}
