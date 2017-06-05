@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="java.util.Vector"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="Maquinas.Maquina"/>
 <fullyQualifiedTypeName name="Monitor.Mutex"/>
 <fullyQualifiedTypeName name="java.util.concurrent.Semaphore"/>
@@ -15,9 +14,10 @@
 <fullyQualifiedTypeName name="Robots.Robot_1"/>
 <fullyQualifiedTypeName name="Robots.Robot_2"/>
 <fullyQualifiedTypeName name="Robots.Robot_3"/>
-<fullyQualifiedTypeName name="Monitor.GestorDeMonitor"/>
 <fullyQualifiedTypeName name="Instrumentos.Instrumento"/>
 <fullyQualifiedTypeName name="Maquinas.Maquina_4"/>
 <fullyQualifiedTypeName name="java.lang.Long"/>
 <fullyQualifiedTypeName name="Extra.Matriz"/>
+<fullyQualifiedTypeName name="Monitor.GestorDeMonitor"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>

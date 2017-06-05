@@ -21,11 +21,17 @@ public class Colas {
 	public synchronized void acquire(int transicion, Thread proceso){
 		arregloColas[transicion].meterEnCola(proceso);
 		arregloEstan.setDato(transicion, 0, 1);
+		try {
+			proceso.wait();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		//arregloEstan[transicion]=true;
 	}
 	public void release(int transicion){
 		
-		arregloColas[transicion].obtenerProceso();
+		arregloColas[transicion].obtenerProceso().notify();
 		if(arregloColas[transicion].isEmpty())
 			arregloEstan.setDato(transicion, 0, 0);
 	}

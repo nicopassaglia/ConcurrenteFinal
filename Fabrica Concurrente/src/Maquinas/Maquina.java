@@ -13,7 +13,7 @@ public class Maquina extends Instrumento implements Runnable{
 		transiciones = new Matriz(1,20);
 		//secuencia = new Matriz(1,20);
 		this.gdm = gdm;
-	
+
 	}
 
 	@Override
@@ -22,30 +22,30 @@ public class Maquina extends Instrumento implements Runnable{
 		try {
 			Thread.sleep(3000);
 			System.out.println("Me dispare " + this.getClass().getName());
-			
+
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
+
 	}
 
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-			System.out.println("ME QUIERO DISPARAR");
-			
-			for(int i=0;i<secuencia.getColCount();i++){
-			
-				gdm.Disparar(secuencia.getVal(0, i), this);
-			}
+		System.out.println("ME QUIERO DISPARAR");
+		Thread proceso = new Thread(this);
+		for(int i=0;i<secuencia.getColCount();i++){
 
-			/*if disparar
-			 * intento disparar mi secuencia
+			gdm.Disparar(secuencia.getVal(0, i), proceso);
+		}
+
+		/*if disparar
+		 * intento disparar mi secuencia
 			 else
 			 me duermo------->imposible
-			 */
+		 */
 
 	}
 
@@ -53,26 +53,26 @@ public class Maquina extends Instrumento implements Runnable{
 	public void dormir(boolean dormir) {
 		// TODO Auto-generated method stub
 		while(dormir){
-		try {
-			
-			Thread.sleep(Long.MAX_VALUE);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			try {
+
+				Thread.sleep(Long.MAX_VALUE);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		this.DispararElemento();
-		
+
 	}
-	
+
 	public Matriz getTransiciones(){
 		return this.transiciones;
 	}
 
 
 
-	
-	
+
+
 
 
 

@@ -11,8 +11,12 @@ public class GestorDeMonitor {
 	public Semaphore mutex;
 	public Politicas politicas;
 	public RDP rdp;
-
-
+	private boolean k;
+	private Matriz sensiViejas;
+	private Matriz sensiNuevas;
+	private Matriz quienes;
+	private Matriz and;
+	private int cual;
 
 	public GestorDeMonitor(Colas colas, Politicas politicas, RDP rdp){
 
@@ -22,13 +26,10 @@ public class GestorDeMonitor {
 		this.rdp = rdp;
 	}
 
-	public Integer Disparar(int transicion, Thread proceso){
-		boolean k;
-		Matriz sensiViejas;
-		Matriz sensiNuevas;
-		Matriz quienes;
-		Matriz and;
-		int cual;
+	public void Disparar(int transicion, Thread proceso){
+		
+		
+		
 		//pregunta
 		//REVISAR EL TEMA VARIABLES
 		try {
@@ -45,8 +46,8 @@ public class GestorDeMonitor {
 
 					if(cual != -1){
 						colas.release(cual);
-						return null;
-						//pregunta
+					
+						//salir del monitor 
 					}
 					else{
 						k=false;
@@ -57,11 +58,13 @@ public class GestorDeMonitor {
 					//pregunta
 					mutex.release();
 					colas.acquire(transicion, proceso);
+					
 					//colas.acquire debe ser sincronizado
 
 				}
-				mutex.release();
+				
 			}
+			mutex.release();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

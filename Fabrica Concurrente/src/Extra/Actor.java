@@ -38,7 +38,7 @@ public class Actor extends Thread{
 
 			if(transicion!=null){	//Si no hay transicion para disparar no hago nada.
 				transicionQueDisparo=transicion;
-				transicion=monitor.Disparar(transicion.intValue(), (Thread)this);
+				//transicion=monitor.Disparar(transicion.intValue(), (Thread)this);
 				disparar(transicionQueDisparo);
 				if(transicion!=null){
 					if(esMia(transicion)){

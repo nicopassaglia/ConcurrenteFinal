@@ -33,7 +33,15 @@ public class Main {
         
         Matriz incidencia = new Matriz(incidenciaRDP);
         Matriz marcado = new Matriz(marcadoRDP);
-        Matriz sensibilizadas = rdp.sensibilizadas();     
+        Matriz transiciones = oArchivo.leerTxtFile();
+        
+        for(int i = 0;i<transiciones.getFilCount();i++){
+        	for(int j=0;j<transiciones.getColCount();j++){
+        		
+        	}
+        }
+        
+       /* Matriz sensibilizadas = rdp.sensibilizadas();     
         
         Colas colas = new Colas(incidencia.getColCount());
         
@@ -74,58 +82,8 @@ public class Main {
 		hilo_maq_4.start();*/
         
 		
-		sensibilizadas.transpose().imprimirMatriz();
-        
-        int  x = 0;
-        while(x<5){
-        	/*quienesEstan.imprimirMatriz();
-        	System.out.println("::::::::::::::::");*/
-        	
-        	/*
-        	int proceso;
-        	Matriz and;
-        	
-        	and = sensibilizadas.AND(quienesEstan);
-        	
-        		
-        		
-        	
-        	
-        	proceso = politicas.cual(and);*/
-        	
-        	
-        	
-        	/*if(proceso != -1){
-        		
-        		
-        	
-        		System.out.println(proceso);
-        		marcado = rdp.getMarcadoM();
-        		sensibilizadas = rdp.sensibilizadas();
-        		if(m1.getTransiciones().getVal(0, proceso)==1){
-        		gdm.Disparar(proceso,m1);
-        		}else if(m2.getTransiciones().getVal(0, proceso)==1){
-        			gdm.Disparar(proceso, m2);
-        		}else if(m3.getTransiciones().getVal(0, proceso)==1){
-        			gdm.Disparar(proceso, m3);
-        		}else if(m4.getTransiciones().getVal(0, proceso)==1){
-        			gdm.Disparar(proceso, m4);
-        		}else{
-        			System.out.println("HOLA");
-        		}
-        		
-        		
-        		
-        		
-        	}else{
-        		System.out.println("No hay procesos");
-        	}*/
-        	
-        	
-        	
-        	x++;
-        	
-        }
+		//sensibilizadas.transpose().imprimirMatriz();
+       
         /*
         }*/
        /* incidencia.imprimirMatriz();
