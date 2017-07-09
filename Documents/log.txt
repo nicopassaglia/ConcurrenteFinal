@@ -1,0 +1,6 @@
+Developer: Agustin Colazo
+Fecha: 7/9/2017
+
+Reporte: 
+Agrego documentacion de metodos y funcionamiento general del programa. Mas adelante agregare los diagramas
+de clase y de secuencia.

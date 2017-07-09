@@ -1,0 +1,4 @@
+Para poder destrabar una RdP hay que igualar sifones y trampas.
+
+Para poder determinar que hilos se encargan de que transiciones, 
+el modo formal es con p-invariantes y t-invariantes.

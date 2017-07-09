@@ -1,0 +1,15 @@
+El programa funciona del siguiente modo:
+
+Por un lado esta el monitor que consiste de las clases: Gestor de Monitor, Colas, Red de Petri y Politicas.
+Los actores seran los hilos que se encargaran de disparar las transiciones. Estos llamaran al Gestor del Monitor
+(al cual referencian). Dentro del monitor este permitara al Actor continuar, o en caso de ser necesario lo pondra
+en una cola de espera y hara que el Thread se duerma (con el metodo yield).
+
+Habra una interfaz Instrumento o un controlador de instrumentos.
+
+Al controlador puede pasarsele la transicions que se ejecuta y este con una matriz puede encargarse de 
+llamar al instrumento correspondiente y el metodo correspondiente.
+
+Los instrumentos seran las maquinas y los brazos roboticos que se encargaran de ejecutar las acciones concretas.
+
+Como funcionara el Tiempo aun no esta especificado.

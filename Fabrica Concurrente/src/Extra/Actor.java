@@ -6,6 +6,10 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import Monitor.GestorDeMonitor;
 
+/*
+ * Esta clase es obsoleta.
+ */
+
 public class Actor extends Thread{
 
 	int ID;		//ID de este hilo(el primero comienza en 0)
@@ -91,7 +95,4 @@ public class Actor extends Thread{
 		fifo.addLast(transicion);
 		lock.unlock();
 	}	//este metodo
-
-
-
 }

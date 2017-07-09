@@ -22,6 +22,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+/*
+ * Esta clase se encarga de  leer el .xml para poder obtener la representacion de la red de petri en forma matricial.
+ */
 
 public class LeerArchivo {
 

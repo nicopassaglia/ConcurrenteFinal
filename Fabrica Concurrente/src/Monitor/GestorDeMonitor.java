@@ -48,6 +48,7 @@ public class GestorDeMonitor {
 						colas.release(cual);
 					
 						//salir del monitor 
+						return;
 					}
 					else{
 						k=false;
