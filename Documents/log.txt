@@ -1,3 +1,10 @@
+Developer: Agustin y Nicolas
+Fecha: 8/9/17
+
+Reporte:
+Agregamos diagrama de clases y documentacion de metodos y clases.
+Agregamos leer archivos y creamos el monitor y los actores en el main. Pusimos en ejecucion el monitor.
+-
 Developer: Agustin Colazo
 Fecha: 7/9/2017
 

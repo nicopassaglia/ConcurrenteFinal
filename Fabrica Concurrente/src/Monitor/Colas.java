@@ -26,6 +26,11 @@ public class Colas {
 		}
 	}
 	
+	/*
+	 * Crea todas las colas comunes correspondientes con cada transicion y las guarda en un arreglo.
+	 * Tambien crea un arreglo "arregloEstan" que tendra un "1" si la cola de esa posicion no esta vacia. Y un cero si esta vacia.
+	 */
+	
 	public synchronized void acquire(int transicion, Thread proceso){
 		arregloColas[transicion].meterEnCola(proceso);
 		arregloEstan.setDato(transicion, 0, 1);
@@ -37,6 +42,11 @@ public class Colas {
 		}
 		//arregloEstan[transicion]=true;
 	}
+	
+	/*
+	 * Mete un hilo en la cola correspondiente.
+	 */
+	
 	public void release(int transicion){
 		
 		arregloColas[transicion].obtenerProceso().notify();
@@ -44,9 +54,18 @@ public class Colas {
 			arregloEstan.setDato(transicion, 0, 0);
 	}
 	
+	/*
+	 * Despierta al hilo y lo saca de la cola.
+	 * Modifica el estado del arreglo "arregloEstan"
+	 */
+	
 	public Matriz quienesEstan(){
 		
 		return arregloEstan;
 	}
+	
+	/*
+	 * Devuelve el arreglo que tiene quienes estan en la cola.
+	 */
 	
 }

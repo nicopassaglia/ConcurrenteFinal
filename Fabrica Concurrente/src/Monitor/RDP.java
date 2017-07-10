@@ -47,6 +47,10 @@ public class RDP {
 		return sensibilizadas;
 	}
 	
+	/*
+	 * Devuelve la matriz que tiene las transiciones sensibilizadas.
+	 */
+	
 	public boolean disparar(int transicion){
 		
 		Matriz sensi;
@@ -61,13 +65,26 @@ public class RDP {
 		
 	}
 	
+	/*
+	 * Si la transicion x esta habilitada, dispara x transicion y obtiene el nuevo marcado del sistema. Y devuelve true.
+	 * Sino no hace nada, y devuelve falso
+	 */
+	
 	public int[][] getMarcado(){
 		return this.marcado;
 	}
 	
+	/*
+	 * Devuelve el marcado actual.
+	 */
+	
 	public int[][] getIncidencia(){
 		return this.incidencia;
 	}
+	
+	/*
+	 * Devuelve la matriz de incidencia.
+	 */
 	
 	public void nuevoMarcado(int transicion){
 		Matriz marcadoT = marcadoM.transpose();
@@ -88,9 +105,17 @@ public class RDP {
 		
 	}
 	
+	/*
+	 * Dispara x transicion y calcula el nuevo marcado.
+	 */
+	
 	public Matriz getMarcadoM(){
 		return this.marcadoM;
 	}
+	
+	/*
+	 * Devuelve el marcado.
+	 */
 	
 	
 }

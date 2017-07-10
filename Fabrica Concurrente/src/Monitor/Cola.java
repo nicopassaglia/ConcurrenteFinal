@@ -20,9 +20,15 @@ public class Cola {
 	}
 	
 	
+	
 	public String getTipoCola(){
 		return this.tipoCola;
 	}
+	
+	/*
+	 * Devuelve el tipo de cola.
+	 * Por ejemplo: Cola Comun, Cola de Cortesia, etc.
+	 */
 	
 	
 	public Runnable obtenerProceso(){
@@ -31,6 +37,10 @@ public class Cola {
 		return proceso;
 	
 	}
+	
+	/*
+	 * Devuelve el primer proceso de la cola.
+	 */
 	
 	public boolean meterEnCola(Thread proceso){
 	
@@ -45,11 +55,20 @@ public class Cola {
 	
 	}
 	
+	/*
+	 * Duerme al proceso y lo pone en la cola.
+	 */
+	
 	public int tamañoCola(){
 		return fifo.size();
 	}
 	
+	
 	public boolean isEmpty(){
 		return fifo.isEmpty();
 	}
+	
+	/*
+	 * Devuelve si la cola esta vacia o no.
+	 */
 }

@@ -1,5 +1,11 @@
 package Extra;
 
+
+/*
+ * La clase matriz es una clase que implementamos para poder hacer las operaciones matriciales necesarias como
+ * AND, MULTIPLICACION, ETC. Y poder setear y operar sobre los datos y sobre la matriz.
+ */
+
 public class Matriz 
 {
     int [][]dato;

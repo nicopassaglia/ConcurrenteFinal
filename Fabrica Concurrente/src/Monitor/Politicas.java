@@ -26,4 +26,9 @@ public class Politicas {
 		}
 		return -1;
 	}
+	
+	/*
+	 * Es el algoritmo que devuelve cual de las transiciones sera la proxima a ejecutar. Es el algoritmo mas sencillo. Devuelve la transicion de mas a la izquiera.
+	 * 
+	 */
 }
