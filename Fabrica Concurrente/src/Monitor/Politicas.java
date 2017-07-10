@@ -3,6 +3,11 @@ import java.util.ArrayList;
 
 import Extra.Matriz;
 
+/*
+ * Esta clase se encarga de decidir que transicion disparar cuando hay dos disponibles y los hilos correspondientes
+ * estan en la cola comun.
+ */
+
 public class Politicas {
 	public Politicas(){
 

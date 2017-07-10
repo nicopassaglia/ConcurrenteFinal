@@ -2,6 +2,12 @@ package Monitor;
 
 import Extra.Matriz;
 
+/*
+ * Esta clase es obsoleta.
+ * La ibamos a implementar cuando un proceso debia llamar al proximo que debia ejecutarse pero no va a funcionar asi... Y si funcionara asi, no seria el mejor modo de hacerlo.
+ * Probablemente habria que hacer un objeto externo al monitor.
+ */
+
 public class PoliticasLlamar {
 	
 	

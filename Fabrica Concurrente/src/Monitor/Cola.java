@@ -1,5 +1,11 @@
 package Monitor;
 import java.util.LinkedList;
+/*
+ * Esta es la clase Cola. La clase cola es la cola en que entran los hilos (Runnables). 
+ * 
+ * @See Colas.java
+ */
+
 import java.util.Queue;
 public class Cola {
 

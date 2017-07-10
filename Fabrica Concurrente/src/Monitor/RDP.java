@@ -3,6 +3,10 @@ import java.util.ArrayList;
 
 import Extra.Matriz;
 
+/*
+ * Esta clase contiene todas las matrices que representan a la Red de Petri.
+ */
+
 public class RDP {
 	
 	public int[][] marcado;

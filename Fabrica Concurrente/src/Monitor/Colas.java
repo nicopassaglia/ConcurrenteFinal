@@ -4,8 +4,16 @@ import java.util.Vector;
 
 import Extra.Matriz;
 
+/*
+ * La clase Colas.java es la clase que asocia el elemento "Cola.java" con las transiciones correspondientes.
+ * Tambien se encargara de poner hilos en las colas, de liberarlos y de avisar quienes estan en ellas.
+ * 
+ * @see Cola.java
+ */
+
 public class Colas {
 
+	
 	private Cola[] arregloColas;
 	private Matriz arregloEstan;
 	

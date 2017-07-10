@@ -5,6 +5,10 @@ import java.util.concurrent.Semaphore;
 import Extra.Matriz;
 import Instrumentos.Instrumento;
 
+/*
+ * Gestor del monitor. Es el objeto que se encarga de ejecutar los metodos de los demas objetos.
+ */
+
 public class GestorDeMonitor {
 
 	public Colas colas;
