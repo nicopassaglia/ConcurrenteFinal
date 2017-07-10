@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import Extra.LeerArchivo;
 import Extra.Matriz;
@@ -33,13 +35,18 @@ public class Main {
         
         Matriz incidencia = new Matriz(incidenciaRDP);
         Matriz marcado = new Matriz(marcadoRDP);
-        Matriz transiciones = oArchivo.leerTxtFile();
+       // Matriz transiciones = oArchivo.leerTxtFile();
         
-        for(int i = 0;i<transiciones.getFilCount();i++){
-        	for(int j=0;j<transiciones.getColCount();j++){
-        		
-        	}
-        }
+
+        
+      List<Matriz> listaTransiciones = new ArrayList<>();
+      
+      listaTransiciones = oArchivo.leerTxtFile();
+      
+      for(int i = 0;i<listaTransiciones.size();i++){
+    	  listaTransiciones.get(i).imprimirMatriz();
+    	  System.out.println("----------------");
+      }
         
        /* Matriz sensibilizadas = rdp.sensibilizadas();     
         

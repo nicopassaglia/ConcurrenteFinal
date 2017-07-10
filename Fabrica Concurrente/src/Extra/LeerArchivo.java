@@ -1,4 +1,5 @@
 package Extra;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -6,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -365,10 +367,12 @@ public class LeerArchivo {
 
 	}
 
-	public Matriz leerTxtFile(){
+	public List leerTxtFile(){
 		int max = 20;
 		FileReader input;
 		int[][] trans= new int[max][max];
+		List<Integer> vector = new ArrayList<>();
+		List<Matriz> matrices = new ArrayList<>();
 
 
 		try {
@@ -379,43 +383,38 @@ public class LeerArchivo {
 			int pos = 0;
 			
 
-			while(pos < max){
+	
 				while ( (myLine = bufRead.readLine()) != null)
 				{    
-
+					int k = 0;
+					
 					String[] datos = myLine.split(" ");
 
-					for(int i=0;i<max;i++){
+					
+
+					while(k < datos.length ){
 
 
-
-
-						try{
-							trans[pos][i] = Integer.parseInt(datos[i]);
-
-						}catch(ArrayIndexOutOfBoundsException e){
-
-							System.out.println("te pasaste");
-
-							trans[pos][i] = -1;
-
-						}
-
+						vector.add(k,Integer.parseInt(datos[k]));
+						k++;
+									
+					}
+					
+					Matriz temporal = new Matriz(1,datos.length);
+					
+					for(int i = 0;i<datos.length;i++){
+						
+						temporal.setDato(0, i, Integer.parseInt(datos[i]));
 						
 					}
+					
+					matrices.add(pos,temporal);
 					pos++;
-
 				}
 				
-			for(int fil=0;fil<max;fil++){
-				trans[pos][fil] = -1;
-				
-			}
-			pos++;
-				
 
 
-			}
+		
 
 
 
@@ -426,9 +425,8 @@ public class LeerArchivo {
 
 
 
-		Matriz transiciones = new Matriz(trans);
-
-		return transiciones;
+		return matrices;
 	}
+	
 }
 
