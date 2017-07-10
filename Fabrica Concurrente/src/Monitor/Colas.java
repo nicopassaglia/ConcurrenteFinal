@@ -13,25 +13,28 @@ public class Colas {
 		arregloColas = new Cola[transiciones];
 		this.arregloEstan = new Matriz(transiciones,1);
 		for(int i=0; i<transiciones; i++){
-			arregloColas[i]=new Cola("Cortesia");
+			arregloColas[i]=new Cola("Comun");
 			arregloEstan.setDato(i, 0, 0);
 		}
 	}
 	
-	public synchronized void acquire(int transicion, Thread proceso){
-		arregloColas[transicion].meterEnCola(proceso);
+	public void acquire(int transicion, Thread proceso){
 		arregloEstan.setDato(transicion, 0, 1);
-		try {
-			proceso.wait();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		arregloColas[transicion].meterEnCola(proceso);
+		
+	
 		//arregloEstan[transicion]=true;
 	}
+	
 	public void release(int transicion){
 		
-		arregloColas[transicion].obtenerProceso().notify();
+		Cola ColaLiberadora;
+		ColaLiberadora = arregloColas[transicion];
+		//System.out.println("TRANSICION:" +transicion);
+		Runnable r = ColaLiberadora.obtenerProceso();
+		synchronized(r){
+		r.notify();
+		}
 		if(arregloColas[transicion].isEmpty())
 			arregloEstan.setDato(transicion, 0, 0);
 	}

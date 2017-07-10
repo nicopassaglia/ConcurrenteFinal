@@ -33,8 +33,10 @@ public class actorNuevo implements Runnable {
 	
 	public void run(){
 		
+		int i;
 		while(true){
-			for(int i = 0; i<secuencia.getFilCount();i++){
+			
+			for(i = 0; i<secuencia.getColCount();i++){
 				gdm.Disparar(secuencia.getVal(0, i), yo);
 				//Ejecutar accion. Falta tiempo.
 				System.out.println("Hilo " + getID() + ": "  + "Dispare "  + "la transicion "+ secuencia.getVal(0, i));

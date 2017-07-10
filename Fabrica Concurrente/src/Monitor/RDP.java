@@ -28,17 +28,19 @@ public class RDP {
 		for(int i=0;i<incidenciaM.getColCount();i++){
 			int transicion = 1;
 			for(int j=0;j<marcadoT.getFilCount();j++){
-				
+				if(incidenciaNueva.getVal(j, i) > 0){
 					if(marcadoT.getVal(j, 0)>=incidenciaNueva.getVal(j, i)){
 						continue;
 					}else{
 						transicion = 0;
 						break;
 					}
+				}
 			}
 			sensibilizadas.setDato(i, 0, transicion);
 		}
 		
+	
 		
 		return sensibilizadas;
 	}

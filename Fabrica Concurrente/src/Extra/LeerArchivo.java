@@ -230,6 +230,7 @@ public class LeerArchivo {
 	private void obtenerIncidencia() {
 		Element row = tableRowElements.get(iIncidencia+1);
 		String[] datos = row.text().split(" ");
+		System.out.println(datos[5]);
 		int col = 0;
 		int fil = 0;
 		for (int i = 0; i < datos.length; i++) {
@@ -240,33 +241,26 @@ public class LeerArchivo {
 		}
 
 		int[][] mat  = new int[fil][col];
-		for (int i = 0; i < datos.length; i++) {
-			if(datos[i].contains("P")){
-				fil = Integer.parseInt(datos[i].replace("P", ""));
+		int colAux = 0;
+		int filAux = 0;
+		for (int i = 0; i <col; i++) {
 
-				for (int j = 0; j < col; j++) {
-					mat[fil][j]=Integer.parseInt(datos[i+1+j]);
+
+			if(datos[i].contains("T")){
+				colAux = Integer.parseInt(datos[i].replace("T", ""));
+			
+				for(int k = 0;k<fil;k++){
+					
+
+					filAux = Integer.parseInt(datos[k+col+(k*(col))].replace("P", ""));
+					
+					mat[filAux][colAux] = Integer.parseInt(datos[i+((col+1)*(k+1))]);
 				}
-			}else if(datos[i].contains("M") && !datos[i].contains("S")){
-				fil = Integer.parseInt(datos[i].replace("M", ""));
 
-				for (int j = 0; j < col; j++) {
-					mat[fil][j]=Integer.parseInt(datos[i+1+j]);
-				}
-
-			}else if(datos[i].contains("S")){
-				fil = Integer.parseInt(datos[i].replace("S", ""));
-
-				for (int j = 0; j < col; j++) {
-					mat[fil][j]=Integer.parseInt(datos[i+1+j]);
-				}
-			}else if(datos[i].contains("R")){
-				fil = Integer.parseInt(datos[i].replace("R", ""));
-
-				for (int j = 0; j < col; j++) {
-					mat[fil][j]=Integer.parseInt(datos[i+1+j]);
-				}
 			}
+
+
+
 		}
 		/*  if(print){
 	            Matriz oMatriz = new Matriz(mat);
@@ -381,40 +375,40 @@ public class LeerArchivo {
 			BufferedReader bufRead = new BufferedReader(input);
 			String myLine = null;
 			int pos = 0;
-			
-
-	
-				while ( (myLine = bufRead.readLine()) != null)
-				{    
-					int k = 0;
-					
-					String[] datos = myLine.split(" ");
-
-					
-
-					while(k < datos.length ){
 
 
-						vector.add(k,Integer.parseInt(datos[k]));
-						k++;
-									
-					}
-					
-					Matriz temporal = new Matriz(1,datos.length);
-					
-					for(int i = 0;i<datos.length;i++){
-						
-						temporal.setDato(0, i, Integer.parseInt(datos[i]));
-						
-					}
-					
-					matrices.add(pos,temporal);
-					pos++;
+
+			while ( (myLine = bufRead.readLine()) != null)
+			{    
+				int k = 0;
+
+				String[] datos = myLine.split(" ");
+
+
+
+				while(k < datos.length ){
+
+
+					vector.add(k,Integer.parseInt(datos[k]));
+					k++;
+
 				}
-				
+
+				Matriz temporal = new Matriz(1,datos.length);
+
+				for(int i = 0;i<datos.length;i++){
+
+					temporal.setDato(0, i, Integer.parseInt(datos[i]));
+
+				}
+
+				matrices.add(pos,temporal);
+				pos++;
+			}
 
 
-		
+
+
 
 
 
@@ -427,6 +421,6 @@ public class LeerArchivo {
 
 		return matrices;
 	}
-	
+
 }
 

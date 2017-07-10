@@ -36,10 +36,15 @@ public class GestorDeMonitor {
 			mutex.acquire();
 			k=true;
 			while(k){
+				
 				sensiViejas = rdp.sensibilizadas();
 				k = rdp.disparar(transicion);
+				
 				if(k){
+					//System.out.println("se ejecuto transicion :" +transicion);
 					sensiNuevas=rdp.sensibilizadas();
+					//sensiNuevas.imprimirMatriz();
+					//colas.quienesEstan().imprimirMatriz();
 					quienes = colas.quienesEstan();
 					and = sensiNuevas.AND(quienes);
 					cual = politicas.cual(and);
@@ -57,6 +62,7 @@ public class GestorDeMonitor {
 				else{
 					//para mi esto tiene que ser sincronizado??
 					//pregunta
+					//System.out.println("no pude, estoy en cola ");
 					mutex.release();
 					colas.acquire(transicion, proceso);
 					

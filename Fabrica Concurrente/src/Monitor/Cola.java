@@ -6,6 +6,7 @@ public class Cola {
 
 	private Queue<Runnable> fifo;
 	private String tipoCola;
+	private Object lock = new Object();
 
 	public Cola(String tipo){
 		this.tipoCola = tipo;
@@ -29,13 +30,17 @@ public class Cola {
 	public boolean meterEnCola(Thread proceso){
 	
 		try {
+			synchronized(proceso){
+			fifo.add(proceso);
 			proceso.wait();
-			return fifo.add(proceso);
+			}
+			return true;
 		} catch (Exception e ) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
 		}
+	
 	
 	}
 	
