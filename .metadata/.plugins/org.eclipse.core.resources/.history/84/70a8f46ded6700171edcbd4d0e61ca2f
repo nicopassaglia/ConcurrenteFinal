@@ -64,7 +64,7 @@ public class UnitTestMatriz {
 		B.setDato(0, 0, 5);
 		B.setDato(0, 1, -2);
 		B.setDato(0, 2, 10);
-		assertEquals(B.getVal(0, 1),A.transpose().getVal(0, 1));
+		assertEquals(B.getVal(1, 0),A.transpose().getVal(0, 1));
 	}
 	
 }

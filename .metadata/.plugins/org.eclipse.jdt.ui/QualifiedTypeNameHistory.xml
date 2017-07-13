@@ -7,7 +7,6 @@
 <fullyQualifiedTypeName name="Extra.LeerArchivo"/>
 <fullyQualifiedTypeName name="Monitor.RDP"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="Maquinas.Maquina_1"/>
 <fullyQualifiedTypeName name="Maquinas.Maquina_2"/>
 <fullyQualifiedTypeName name="Maquinas.Maquina_3"/>
@@ -19,5 +18,9 @@
 <fullyQualifiedTypeName name="java.lang.Long"/>
 <fullyQualifiedTypeName name="Extra.Matriz"/>
 <fullyQualifiedTypeName name="Monitor.GestorDeMonitor"/>
+<fullyQualifiedTypeName name="java.awt.List"/>
+<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="Extra.actorNuevo"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
 </qualifiedTypeNameHistroy>
