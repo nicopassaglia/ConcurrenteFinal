@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Testing.leerTxt&apos; to &apos;UnitTestleerTxt&apos;&#x0D;&#x0A;- Original project: &apos;Fabrica Concurrente&apos;&#x0D;&#x0A;- Original element: &apos;Testing.leerTxt&apos;&#x0D;&#x0A;- Renamed element: &apos;Testing.UnitTestleerTxt&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;leerTxt&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;Testing{leerTxt.java[leerTxt" matchStrategy="1" name="UnitTestleerTxt" qualified="false" references="true" similarDeclarations="false" stamp="1499966346970" textual="false" version="1.0"/>
+</session>
