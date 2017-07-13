@@ -46,7 +46,7 @@ public class Main {
 		
 		List<actorNuevo> actores = new ArrayList<>();
 
-		listaTransiciones = oArchivo.leerTxtFile();
+		listaTransiciones = oArchivo.leerTxtFile("hilos");
 
 		for(int i = 0;i<listaTransiciones.size();i++){
 			/*listaTransiciones.get(i).imprimirMatriz();

@@ -4,7 +4,6 @@
 <fullyQualifiedTypeName name="Maquinas.Maquina"/>
 <fullyQualifiedTypeName name="Monitor.Mutex"/>
 <fullyQualifiedTypeName name="java.util.concurrent.Semaphore"/>
-<fullyQualifiedTypeName name="Extra.LeerArchivo"/>
 <fullyQualifiedTypeName name="Monitor.RDP"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="Maquinas.Maquina_1"/>
@@ -16,11 +15,14 @@
 <fullyQualifiedTypeName name="Instrumentos.Instrumento"/>
 <fullyQualifiedTypeName name="Maquinas.Maquina_4"/>
 <fullyQualifiedTypeName name="java.lang.Long"/>
-<fullyQualifiedTypeName name="Extra.Matriz"/>
 <fullyQualifiedTypeName name="Monitor.GestorDeMonitor"/>
 <fullyQualifiedTypeName name="java.awt.List"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="Extra.actorNuevo"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="Extra.LeerArchivo"/>
+<fullyQualifiedTypeName name="Extra.Matriz"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="org.junit.Test"/>
+<fullyQualifiedTypeName name="java.util.Calendar"/>
+<fullyQualifiedTypeName name="Extra.actorNuevo"/>
 </qualifiedTypeNameHistroy>

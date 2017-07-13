@@ -38,7 +38,7 @@ public class Maquina extends Instrumento implements Runnable{
 		Thread proceso = new Thread(this);
 		for(int i=0;i<secuencia.getColCount();i++){
 
-			gdm.Disparar(secuencia.getVal(0, i), proceso);
+			//gdm.Disparar(secuencia.getVal(0, i), proceso);
 		}
 
 		/*if disparar

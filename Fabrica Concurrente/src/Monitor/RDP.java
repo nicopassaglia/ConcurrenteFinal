@@ -71,7 +71,7 @@ public class RDP {
 		Matriz marcadoT = marcadoM.transpose();
 		Matriz vectorDisparo = new Matriz(incidenciaM.getColCount(),1);
 		
-		for(int i=0;i<20;i++){
+		for(int i=0;i<incidenciaM.getColCount();i++){
 			if(i!=transicion)
 				vectorDisparo.setDato(i,0,0 );
 			else{

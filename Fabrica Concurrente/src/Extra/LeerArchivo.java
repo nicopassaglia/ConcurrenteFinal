@@ -361,7 +361,7 @@ public class LeerArchivo {
 
 	}
 
-	public List leerTxtFile(){
+	public List leerTxtFile(String nombreArchivo){
 		int max = 20;
 		FileReader input;
 		int[][] trans= new int[max][max];
@@ -371,7 +371,7 @@ public class LeerArchivo {
 
 		try {
 
-			input = new FileReader("src/Extra/hilos.txt");
+			input = new FileReader("src/Extra/"+nombreArchivo+".txt");
 			BufferedReader bufRead = new BufferedReader(input);
 			String myLine = null;
 			int pos = 0;

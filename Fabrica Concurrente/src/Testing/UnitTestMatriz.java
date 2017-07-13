@@ -21,7 +21,7 @@ public class UnitTestMatriz {
 		Matriz C = new Matriz(1,1);
 		C.setDato(0, 0, 3);
 		
-		assertEquals(C.getVal(0, 0),A.plus(B).getVal(0, 0));
+		assertEquals(C.toString(),A.plus(B).toString());
 	}
 	@Test
 	public void multAndMatrices(){
@@ -34,7 +34,7 @@ public class UnitTestMatriz {
 		Matriz C = new Matriz(1,1);
 		C.setDato(0, 0, 20);
 		
-		assertEquals(C.getVal(0, 0),A.multAnd(B).getVal(0, 0));
+		assertEquals(C.toString(),A.multAnd(B).toString());
 	}
 	
 	
@@ -64,7 +64,7 @@ public class UnitTestMatriz {
 		B.setDato(0, 0, 5);
 		B.setDato(0, 1, -2);
 		B.setDato(0, 2, 10);
-		assertEquals(B.getVal(0, 1),A.transpose().getVal(0, 1));
+		assertEquals(B.toString(),A.transpose().toString());
 	}
 	
 }

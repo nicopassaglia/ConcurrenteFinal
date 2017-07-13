@@ -37,9 +37,10 @@ public class actorNuevo implements Runnable {
 		while(true){
 			
 			for(i = 0; i<secuencia.getColCount();i++){
-				gdm.Disparar(secuencia.getVal(0, i), yo);
+				gdm.Disparar(secuencia.getVal(0, i), this);
+				
 				//Ejecutar accion. Falta tiempo.
-				System.out.println("Hilo " + getID() + ": "  + "Dispare "  + "la transicion "+ secuencia.getVal(0, i));
+				//System.out.println("Hilo " + getID() + ": "  + "Dispare "  + "la transicion "+ secuencia.getVal(0, i));
 			}
 		}
 		
@@ -65,6 +66,8 @@ public class actorNuevo implements Runnable {
 	public int getID(){
 		return this.id;
 	}
-	
+	public Thread getThread(){
+		return this.yo;
+	}
 	}
 

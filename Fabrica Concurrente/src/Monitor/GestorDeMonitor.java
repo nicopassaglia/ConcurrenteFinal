@@ -3,6 +3,7 @@ package Monitor;
 import java.util.concurrent.Semaphore;
 
 import Extra.Matriz;
+import Extra.actorNuevo;
 import Instrumentos.Instrumento;
 
 public class GestorDeMonitor {
@@ -26,8 +27,8 @@ public class GestorDeMonitor {
 		this.rdp = rdp;
 	}
 
-	public void Disparar(int transicion, Thread proceso){
-		
+	public void Disparar(int transicion, actorNuevo actor){
+		Thread proceso = actor.getThread();
 		
 		
 		//pregunta
@@ -41,7 +42,7 @@ public class GestorDeMonitor {
 				k = rdp.disparar(transicion);
 				
 				if(k){
-					//System.out.println("se ejecuto transicion :" +transicion);
+					System.out.println("se ejecuto transicion :" +transicion +" por el hilo:"+actor.getID()+" en el instante:"+System.currentTimeMillis());
 					sensiNuevas=rdp.sensibilizadas();
 					//sensiNuevas.imprimirMatriz();
 					//colas.quienesEstan().imprimirMatriz();
