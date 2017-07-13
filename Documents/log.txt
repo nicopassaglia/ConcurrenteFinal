@@ -1,3 +1,16 @@
+Developer: Agustin y Nicolas
+Fecha: 8/9/17
+
+Reporte:
+Agregamos diagrama de clases y documentacion de metodos y clases.
+Agregamos leer archivos y creamos el monitor y los actores en el main.
+Hicimos funcionar el monitor sin tiempo con la red completa. Funcionan todas las clases, hilos, las colas y los semaforos correctamente.
+Para la proxima vez vamos a hacer el testing de clases.
+Un testing va a ser una red que tenga una determinada secuencia de ejecucion (con minimas variaciones) que podamos ejecutar reiteradamente:
+Unas mil veces de ejecucion (La cantidad de veces que se ejecuta la secuencia se puede ver en actor) y comprobar que la secuencia sea correcta (por ej: 1-2-4 o 1-3-4).
+Tambien podemos probar si podemos hacerlo con la red Productor/Consumidor.
+Agregar a actor un contador cada vez que termina una vez la secuencia.
+-
 Developer: Agustin Colazo
 Fecha: 7/9/2017
 

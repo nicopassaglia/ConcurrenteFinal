@@ -2,3 +2,6 @@ Para poder destrabar una RdP hay que igualar sifones y trampas.
 
 Para poder determinar que hilos se encargan de que transiciones, 
 el modo formal es con p-invariantes y t-invariantes.
+
+Todavia no usamos colas de cortesia. Estas se usan cuando entra un hilo al monitor y otro le deja su lugar.
+Lo que usamos en las transiciones son las colas comunes.
