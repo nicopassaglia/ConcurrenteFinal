@@ -1,0 +1,78 @@
+package Monitor;
+
+import java.util.ArrayList;
+import java.util.Date;
+
+import Extra.Matriz;
+
+public class Tiempo {
+	
+	private ArrayList<Date> alfas = new ArrayList<>();
+	private ArrayList<Date> betas = new ArrayList<>();
+	private ArrayList<Date> sensibilizacion = new ArrayList<>();
+	private Matriz esperando;
+	public Tiempo(int cantTransiciones){
+		esperando = new Matriz(1,cantTransiciones);
+		esperando.productoPorEscalar(0);
+		
+		Date d = new Date();
+	
+	}
+	
+	public boolean estaSensibilizado(int transicion){
+		return false;
+	}
+	
+	public void setNow(Date date){
+		date.setTime(System.currentTimeMillis());
+	}
+	
+	public void setNuevoTimeStamp(Matriz nuevasSensi){
+		
+		for(int i=0;i<nuevasSensi.getColCount();i++){
+			if(nuevasSensi.getVal(0, i) == 1){
+				setNow(sensibilizacion.get(i));
+			}
+		}
+	}
+	
+	public boolean testVentanaTiempo(int transicion){
+		long ahora = System.currentTimeMillis();
+		long timeStamp = sensibilizacion.get(transicion).getTime();
+		
+		if(ahora - timeStamp < betas.get(transicion).getTime() && ahora-timeStamp > alfas.get(transicion).getTime())
+			return true;
+		
+		return false;
+	}
+	
+	public boolean antesVentana(int transicion){
+		long ahora = System.currentTimeMillis();
+		long timeStamp = sensibilizacion.get(transicion).getTime();
+		
+		if(ahora - timeStamp < alfas.get(transicion).getTime()){
+			setEsperando(transicion);
+			return true;
+		}
+			
+		
+		return false;
+	}
+	
+	public void setEsperando(int transicion){
+		esperando.setDato(0, transicion, 1);
+	}
+	
+	public boolean estaEsperando(int transicion){
+		if(esperando.getVal(0, transicion) == 1){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	public void resetEsperando(int transicion){
+		esperando.setDato(0, transicion, 0);
+	}
+
+}

@@ -12,7 +12,7 @@ public class GestorDeMonitor {
 	public Semaphore mutex;
 	public Politicas politicas;
 	public RDP rdp;
-	private boolean k;
+	private int k;
 	private Matriz sensiViejas;
 	private Matriz sensiNuevas;
 	private Matriz quienes;
@@ -35,13 +35,13 @@ public class GestorDeMonitor {
 		//REVISAR EL TEMA VARIABLES
 		try {
 			mutex.acquire();
-			k=true;
-			while(k){
+			k=1;
+			while(k == 1){
 				
 				sensiViejas = rdp.sensibilizadas();
 				k = rdp.disparar(transicion);
 				
-				if(k){
+				if(k==1){
 					System.out.println("se ejecuto transicion :" +transicion +" por el hilo:"+actor.getID()+" en el instante:"+System.currentTimeMillis());
 					sensiNuevas=rdp.sensibilizadas();
 					//sensiNuevas.imprimirMatriz();
@@ -57,10 +57,10 @@ public class GestorDeMonitor {
 						return;
 					}
 					else{
-						k=false;
+						k=0;
 					}
 				}
-				else{
+				else if(k==0){
 					//para mi esto tiene que ser sincronizado??
 					//pregunta
 					//System.out.println("no pude, estoy en cola ");
@@ -69,6 +69,9 @@ public class GestorDeMonitor {
 					
 					//colas.acquire debe ser sincronizado
 
+				}else{
+					//dormido
+					return;
 				}
 				
 			}
@@ -77,6 +80,10 @@ public class GestorDeMonitor {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void releaseMutex(){
+		this.mutex.release();
 	}
 
 
