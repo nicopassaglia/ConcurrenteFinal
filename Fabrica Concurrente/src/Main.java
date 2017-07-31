@@ -115,5 +115,24 @@ public class Main {
 
 
 	}
+	public void tina(Matriz incidencia){
+		 String entradas = "";
+		 String salidas = "";
+		 String output;
+		
+		 for (int j=0; j<incidencia.getColCount(); j++){
+			 for (int i=0; i<incidencia.getFilCount(); i++){
+				 if(incidencia.getVal(i, j) == 1){
+					 salidas = salidas + " p" + i;
+				 }
+				 else if(incidencia.getVal(i, j) == -1){
+					 entradas = entradas + " p" + i;
+				 }
+			 }
+			 output = "tr" + entradas + " ->" + salidas;
+			 System.out.println(output);
+		 }
+		
+	}
 
 }
