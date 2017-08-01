@@ -19,15 +19,16 @@ public class GestorDeMonitor {
 	private Matriz and;
 	private int cual;
 
-	public GestorDeMonitor(Colas colas, Politicas politicas, RDP rdp){
+	public GestorDeMonitor(Colas colas, Politicas politicas, RDP rdp,Semaphore mutex){
 
-		this.mutex = new Semaphore(1,true);
+	//	this.mutex = new Semaphore(1,true);
+		this.mutex = mutex;
 		this.colas = colas;
 		this.politicas = politicas;
 		this.rdp = rdp;
 	}
 
-	public void Disparar(int transicion, actorNuevo actor){
+	public boolean Disparar(int transicion, actorNuevo actor){
 		Thread proceso = actor.getThread();
 		
 		
@@ -35,6 +36,7 @@ public class GestorDeMonitor {
 		//REVISAR EL TEMA VARIABLES
 		try {
 			mutex.acquire();
+			System.out.println("Soy "+actor.getID()+" quiero ejecutar: "+transicion);
 			k=1;
 			while(k == 1){
 				
@@ -48,13 +50,13 @@ public class GestorDeMonitor {
 					//colas.quienesEstan().imprimirMatriz();
 					quienes = colas.quienesEstan();
 					and = sensiNuevas.AND(quienes);
-					cual = politicas.cual(and);
+					cual = politicas.cualFifo(and);
 
 					if(cual != -1){
 						colas.release(cual);
 					
 						//salir del monitor 
-						return;
+						return true;
 					}
 					else{
 						k=0;
@@ -63,7 +65,8 @@ public class GestorDeMonitor {
 				else if(k==0){
 					//para mi esto tiene que ser sincronizado??
 					//pregunta
-					//System.out.println("no pude, estoy en cola ");
+					System.out.println("no pude, estoy en cola, soy: " + actor.getID());
+					politicas.insertFifo(transicion);
 					mutex.release();
 					colas.acquire(transicion, proceso);
 					
@@ -71,7 +74,26 @@ public class GestorDeMonitor {
 
 				}else{
 					//dormido
-					return;
+					long tiempoDormir = rdp.getTiempo();
+					System.out.println("ME DEBERIA DORMIR SOY "+ actor.getID() + " por " + tiempoDormir);
+					mutex.release();
+					
+				
+					try{
+						synchronized(this){
+							
+							wait(tiempoDormir);
+							System.out.println("ME DESPERTE :"+ actor.getID());
+						}
+					}
+					catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					
+					
+					return false;
 				}
 				
 			}
@@ -80,6 +102,7 @@ public class GestorDeMonitor {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return true;
 	}
 	
 	public void releaseMutex(){

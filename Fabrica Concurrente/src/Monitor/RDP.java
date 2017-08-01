@@ -11,12 +11,13 @@ public class RDP {
 	private Matriz marcadoM;
 	private Tiempo tiempo;
 
-	public RDP(int[][] marcadoInicial, int[][] incidencia){
+	public RDP(int[][] marcadoInicial, int[][] incidencia,Tiempo tiempo){
 		this.marcado = marcadoInicial;
 		this.incidencia = incidencia;
 
 		incidenciaM = new Matriz(this.incidencia);
 		this.marcadoM = new Matriz(this.marcado);
+		this.tiempo = tiempo;
 	}
 
 	public Matriz sensibilizadas(){
@@ -125,6 +126,8 @@ public class RDP {
 	public Matriz getMarcadoM(){
 		return this.marcadoM;
 	}
-
+	long getTiempo(){
+		return tiempo.getTiempo();
+	}
 
 }
