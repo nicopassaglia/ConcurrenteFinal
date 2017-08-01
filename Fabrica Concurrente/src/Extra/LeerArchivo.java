@@ -86,11 +86,16 @@ public class LeerArchivo {
 						//System.out.println("Posicion: "+i+" - "+j);
 						break;
 					case "Current":
+						System.out.println("ENCONTRE el marcado!!!!!");
 						iMarcado[0] = i;
 						iMarcado[1] = j;
 						//System.out.println(rowItems.get(j).text());
 						//System.out.println("Posicion: "+i+" - "+j);
 						break;
+						
+					case "T-Invariants":
+							System.out.println("ENCONTRE LOS INVARIANTES!!!!!");
+					break;
 					} 
 				}
 				//System.out.println();
