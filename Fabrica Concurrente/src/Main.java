@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.concurrent.Semaphore;
 
 import Extra.LeerArchivo;
+import Extra.LeerInvariantes;
 import Extra.Matriz;
 import Extra.actorNuevo;
 import Maquinas.Maquina_1;
@@ -24,6 +25,7 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		LeerInvariantes oInvariantes = new LeerInvariantes();
 		LeerArchivo oArchivo = new LeerArchivo();
 		HashMap<String,int[][]> datos = oArchivo.LeerHTML();
 		int tamano = datos.get("incidencia")[0].length;
@@ -49,7 +51,7 @@ public class Main {
 		
 		GestorDeMonitor gdm = new GestorDeMonitor(colas,politicas,rdp,mutex);
 		
-		tina(incidencia);
+		//tina(incidencia);
 		List<Matriz> listaTransiciones = new ArrayList<>();
 		
 		List<actorNuevo> actores = new ArrayList<>();
