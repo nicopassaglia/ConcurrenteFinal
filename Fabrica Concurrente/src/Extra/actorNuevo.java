@@ -37,7 +37,12 @@ public class actorNuevo implements Runnable {
 		while(true){
 			
 			for(i = 0; i<secuencia.getColCount();i++){
-				gdm.Disparar(secuencia.getVal(0, i), this);
+				//System.out.println("Soy "+this.getID()+" quiero ejecutar: "+secuencia.getVal(0, i));
+				if(gdm.Disparar(secuencia.getVal(0, i), this)){
+					
+				}else{
+					i--;
+				}
 				
 				//Ejecutar accion. Falta tiempo.
 				//System.out.println("Hilo " + getID() + ": "  + "Dispare "  + "la transicion "+ secuencia.getVal(0, i));

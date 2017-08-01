@@ -3,7 +3,6 @@
 <fullyQualifiedTypeName name="java.util.Vector"/>
 <fullyQualifiedTypeName name="Maquinas.Maquina"/>
 <fullyQualifiedTypeName name="Monitor.Mutex"/>
-<fullyQualifiedTypeName name="java.util.concurrent.Semaphore"/>
 <fullyQualifiedTypeName name="Monitor.RDP"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="Maquinas.Maquina_1"/>
@@ -26,4 +25,6 @@
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="Extra.Matriz"/>
+<fullyQualifiedTypeName name="Monitor.Tiempo"/>
+<fullyQualifiedTypeName name="java.util.concurrent.Semaphore"/>
 </qualifiedTypeNameHistroy>

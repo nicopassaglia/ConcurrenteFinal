@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.Semaphore;
 
 import Extra.LeerArchivo;
 import Extra.Matriz;
@@ -13,6 +14,7 @@ import Monitor.Colas;
 import Monitor.GestorDeMonitor;
 import Monitor.Politicas;
 import Monitor.RDP;
+import Monitor.Tiempo;
 import Robots.Robot_1;
 import Robots.Robot_2;
 import Robots.Robot_3;
@@ -24,7 +26,11 @@ public class Main {
 
 		LeerArchivo oArchivo = new LeerArchivo();
 		HashMap<String,int[][]> datos = oArchivo.LeerHTML();
-		RDP rdp = new RDP(datos.get("marcado"),datos.get("incidencia"));
+		int tamano = datos.get("incidencia")[0].length;
+		Semaphore mutex = new Semaphore(1,true);
+		Tiempo tiempo = new Tiempo(tamano,mutex);
+		System.out.println(tamano);
+		RDP rdp = new RDP(datos.get("marcado"),datos.get("incidencia"),tiempo);
 
 		Politicas politicas = new Politicas();
 
@@ -40,8 +46,10 @@ public class Main {
 		// Matriz transiciones = oArchivo.leerTxtFile();
 		Colas colas = new Colas(incidencia.getColCount());
 //		incidencia.imprimirMatriz();
-		GestorDeMonitor gdm = new GestorDeMonitor(colas,politicas,rdp);
-
+		
+		GestorDeMonitor gdm = new GestorDeMonitor(colas,politicas,rdp,mutex);
+		
+		tina(incidencia);
 		List<Matriz> listaTransiciones = new ArrayList<>();
 		
 		List<actorNuevo> actores = new ArrayList<>();
@@ -115,7 +123,7 @@ public class Main {
 
 
 	}
-	public void tina(Matriz incidencia){
+	public static void tina(Matriz incidencia){
 		 String entradas = "";
 		 String salidas = "";
 		 String output;
@@ -129,8 +137,10 @@ public class Main {
 					 entradas = entradas + " p" + i;
 				 }
 			 }
-			 output = "tr" + entradas + " ->" + salidas;
+			 output = "tr t" + j + entradas + " ->" + salidas;
 			 System.out.println(output);
+			 entradas = "";
+			 salidas = "";
 		 }
 		
 	}
