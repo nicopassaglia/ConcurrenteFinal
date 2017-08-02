@@ -1,0 +1,33 @@
+package Testing;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import Monitor.Cola;
+
+public class UnitTestColas {
+	
+	@Test
+	public void testCola(){
+		Cola cola = new Cola("entrada");
+		
+		Thread t1 = new Thread();
+		Thread t2 = new Thread();
+		Thread t3 = new Thread();
+		t1.start();
+		t2.start();
+		t3.start();
+	
+		cola.meterEnCola(t3);
+		cola.meterEnCola(t2);
+		cola.meterEnCola(t1);
+		
+		assertEquals(1,1);
+		
+		//assertEquals(t3.getName(),((Thread) cola.obtenerProceso()).getName());
+		
+		
+	}
+
+}

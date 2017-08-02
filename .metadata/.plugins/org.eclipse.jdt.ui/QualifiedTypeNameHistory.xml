@@ -19,12 +19,15 @@
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="Extra.LeerArchivo"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="org.junit.Test"/>
 <fullyQualifiedTypeName name="java.util.Calendar"/>
-<fullyQualifiedTypeName name="Extra.actorNuevo"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="Extra.Matriz"/>
 <fullyQualifiedTypeName name="Monitor.Tiempo"/>
 <fullyQualifiedTypeName name="java.util.concurrent.Semaphore"/>
+<fullyQualifiedTypeName name="Monitor.Cola"/>
+<fullyQualifiedTypeName name="Extra.actorNuevo"/>
+<fullyQualifiedTypeName name="java.util.LinkedList"/>
+<fullyQualifiedTypeName name="org.junit.Test"/>
+<fullyQualifiedTypeName name="Monitor.Politicas"/>
+<fullyQualifiedTypeName name="Extra.Matriz"/>
 </qualifiedTypeNameHistroy>

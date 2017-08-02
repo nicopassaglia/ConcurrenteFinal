@@ -1,0 +1,30 @@
+package Testing;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import Extra.Matriz;
+import Monitor.Politicas;
+
+public class UnitTestPoliticas {
+	
+	
+	@Test
+	public void testPoliticas(){
+		Politicas pol = new Politicas();
+		
+		Matriz m = new Matriz(22,1);
+		
+		for(int i =0;i<m.getFilCount();i++){
+			m.setDato(i, 0, 1);
+		}
+		
+		pol.insertFifo(10);
+		pol.insertFifo(8);
+		pol.insertFifo(22);
+		
+		assertEquals(pol.cualFifo(m),10);
+		
+	}
+}
