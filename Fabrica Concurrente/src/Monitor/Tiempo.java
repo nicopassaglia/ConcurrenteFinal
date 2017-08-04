@@ -89,7 +89,7 @@ public class Tiempo {
 		}
 	}
 
-	public void setNow(Date date){
+	private void setNow(Date date){
 		date.setTime(System.currentTimeMillis());
 	}
 
@@ -103,7 +103,7 @@ public class Tiempo {
 	}
 
 
-	public boolean testVentanaTiempo(int transicion,long ahora){
+	private boolean testVentanaTiempo(int transicion,long ahora){
 		//long ahora = System.currentTimeMillis();
 		long timeStamp = sensibilizacion.get(transicion).getTime();
 
@@ -113,7 +113,7 @@ public class Tiempo {
 		return false;
 	}
 
-	public boolean antesVentana(int transicion,long ahora){
+private boolean antesVentana(int transicion,long ahora){
 		//long ahora = System.currentTimeMillis();
 		long timeStamp = sensibilizacion.get(transicion).getTime();
 
@@ -130,7 +130,7 @@ public class Tiempo {
 		esperando.setDato(transicion, 0, (int) Thread.currentThread().getId());
 	}
 
-	public boolean estaEsperando(int transicion){
+	private boolean estaEsperando(int transicion){
 		if(esperando.getVal(transicion, 0) == (int)Thread.currentThread().getId()){
 			return true;
 		}else if(esperando.getVal(transicion, 0)==-1){
@@ -146,7 +146,7 @@ public class Tiempo {
 		esperando.setDato(transicion, 0, -1);
 	}
 
-	public void parseTxtFileTiempo(){
+	private void parseTxtFileTiempo(){
 		int max = 20;
 		FileReader input;
 		int[][] trans= new int[max][max];
@@ -208,7 +208,7 @@ public class Tiempo {
 
 	}
 	
-	long getTiempo(){
+	public long getTiempo(){
 		return this.tiempoDormir;
 	}
 	

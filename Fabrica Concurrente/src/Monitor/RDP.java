@@ -1,6 +1,7 @@
 package Monitor;
 import java.util.ArrayList;
 
+import Extra.LeerInvariantes;
 import Extra.Matriz;
 
 public class RDP {
@@ -10,7 +11,25 @@ public class RDP {
 	private Matriz incidenciaM;
 	private Matriz marcadoM;
 	private Tiempo tiempo;
+	private Matriz pinvariante;
+	private Matriz tinvariante;
+	private Matriz res_pinvariante;
+	private Matriz cont_tinvariante;
 
+	public RDP(int[][] marcadoInicial, int[][] incidencia,Tiempo tiempo, LeerInvariantes invariantes){
+		this.marcado = marcadoInicial;
+		this.incidencia = incidencia;
+
+		incidenciaM = new Matriz(this.incidencia);
+		this.marcadoM = new Matriz(this.marcado);
+		this.tiempo = tiempo;
+		this.pinvariante = invariantes.getPinvariante();
+		this.tinvariante = invariantes.getTinvariante();
+		this.pinvariante.imprimirMatriz();
+		this.res_pinvariante = new Matriz(this.pinvariante.getFilCount(), 1);
+		this.cont_tinvariante = new Matriz(this.tinvariante.getFilCount(), 1);
+	}
+	
 	public RDP(int[][] marcadoInicial, int[][] incidencia,Tiempo tiempo){
 		this.marcado = marcadoInicial;
 		this.incidencia = incidencia;
@@ -104,7 +123,7 @@ public class RDP {
 		return this.incidencia;
 	}
 
-	public void nuevoMarcado(int transicion){
+	private void nuevoMarcado(int transicion){
 		Matriz marcadoT = marcadoM.transpose();
 		Matriz vectorDisparo = new Matriz(incidenciaM.getColCount(),1);
 
@@ -126,7 +145,7 @@ public class RDP {
 	public Matriz getMarcadoM(){
 		return this.marcadoM;
 	}
-	long getTiempo(){
+	public long getTiempo(){
 		return tiempo.getTiempo();
 	}
 

@@ -109,6 +109,7 @@ public class LeerInvariantes {
 		
 		//this.t_invariante.imprimirMatriz();
 		this.p_invariante.imprimirMatrizI();
+		System.out.println(this.p_invariante.getFilCount());
 		
 	}
 
