@@ -24,7 +24,7 @@ public class UnitTestleerTxt {
 		uno.setDato(0, 3, 12);
 		
 		//assertEquals(A.get(0).getVal(0, 3),uno.getVal(0, 3));
-		assertEquals(A.get(0).toString(),uno.toString());
+		assertArrayEquals(A.get(0).getDato(),uno.getDato());
 		
 	}
 }

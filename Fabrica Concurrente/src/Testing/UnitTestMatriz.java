@@ -21,7 +21,21 @@ public class UnitTestMatriz {
 		Matriz C = new Matriz(1,1);
 		C.setDato(0, 0, 3);
 		
-		assertEquals(C.toString(),A.plus(B).toString());
+		assertArrayEquals(C.getDato(),A.plus(B).getDato());
+	}
+	
+	@Test
+	public void RestaMatrices(){
+		Matriz A = new Matriz(1,1);
+		Matriz B = new Matriz(1,1);
+		
+		A.setDato(0, 0, 5);
+		B.setDato(0, 0, 2);
+		
+		Matriz C = new Matriz(1,1);
+		C.setDato(0, 0, 3);
+		
+		assertArrayEquals(C.getDato(),A.minus(B).getDato());
 	}
 	@Test
 	public void multAndMatrices(){
@@ -34,7 +48,7 @@ public class UnitTestMatriz {
 		Matriz C = new Matriz(1,1);
 		C.setDato(0, 0, 20);
 		
-		assertEquals(C.toString(),A.multAnd(B).toString());
+		assertArrayEquals(C.getDato(),A.multAnd(B).getDato());
 	}
 	
 	
@@ -64,7 +78,88 @@ public class UnitTestMatriz {
 		B.setDato(0, 0, 5);
 		B.setDato(0, 1, -2);
 		B.setDato(0, 2, 10);
-		assertEquals(B.toString(),A.transpose().toString());
+		assertArrayEquals(B.getDato(),A.transpose().getDato());
+	}
+	
+	@Test
+	public void clear(){
+		Matriz A = new Matriz(3,1);
+		
+		A.setDato(0, 0, 5);
+		A.setDato(1, 0, -2);
+		A.setDato(2, 0, 10);
+		
+		Matriz B = new Matriz(3,1);
+		B.setDato(0, 0, 0);
+		B.setDato(1, 0, 0);
+		B.setDato(2, 0, 0);
+		
+		A.Clear();
+		
+		assertArrayEquals(B.getDato(),A.getDato());
+	}
+	
+	@Test
+	public void setIdentity(){
+		Matriz A = new Matriz(3,3);
+		A.setIdentity();
+		
+		Matriz B = new Matriz(3,3);
+		B.setDato(0, 0, 1);
+		B.setDato(1, 0, 0);
+		B.setDato(2, 0, 0);
+		
+		B.setDato(1,0, 0);
+		B.setDato(1,1, 1);
+		B.setDato(1,2, 0);
+		
+		B.setDato(2,0, 0);
+		B.setDato(2,1, 0);
+		B.setDato(2,2, 1);		
+		
+		assertArrayEquals(B.getDato(),A.getDato());
+		
+	}
+	
+	@Test
+	public void productoPorEscalar(){
+		Matriz A = new Matriz(3,1);
+		A.setDato(0, 0, 5);
+		A.setDato(1, 0, -2);
+		A.setDato(2, 0, 10);		
+		
+		A = A.productoPorEscalar(3);
+		
+		Matriz B = new Matriz(3,1);
+		
+		B.setDato(0, 0, 15);
+		B.setDato(1, 0, -6);
+		B.setDato(2, 0, 30);
+		
+		assertArrayEquals(B.getDato(),A.getDato());
+	}
+	
+	@Test
+	public void esNula(){
+		Matriz A = new Matriz(3,1);
+		A.setDato(0, 0, 5);
+		A.setDato(1, 0, -2);
+		A.setDato(2, 0, 10);		
+		
+		A = A.productoPorEscalar(0);
+		
+		assertTrue(A.esNula());
+	}
+	
+	public void esNulaNegativo(){
+		Matriz A = new Matriz(3,1);
+		A.setDato(0, 0, 5);
+		A.setDato(1, 0, -2);
+		A.setDato(2, 0, 10);		
+		
+	
+		
+		assertFalse(A.esNula());
 	}
 	
 }

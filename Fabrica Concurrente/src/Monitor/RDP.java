@@ -108,6 +108,7 @@ public class RDP {
 				}
 				
 				contarTinvariante(transicion);
+				this.cont_tinvariante.imprimirMatriz();
 				
 				return 1;
 
@@ -232,6 +233,15 @@ public class RDP {
 		//this.cont_transiciones.imprimirMatrizI();
 		//this.cont_tinvariante.imprimirMatrizI();
 		return;		
+	}
+	
+	public Matriz getPinvariante(){
+		return this.pinvariante;
+	}
+	
+	public Matriz getContadorTinvariante(){
+		return this.cont_tinvariante;
+		
 	}
 	
 }

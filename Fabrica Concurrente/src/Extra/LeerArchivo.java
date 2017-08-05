@@ -56,7 +56,8 @@ public class LeerArchivo {
 	public HashMap<String,int[][]> LeerHTML(){
 		File oFile = null;
 		if (sRed == null){
-			JFileChooser fileChooser = new JFileChooser();
+			JFileChooser fileChooser = new JFileChooser("D:\\Usuario\\Documents\\Facultad\\Concurrente");
+			//fileChooser.setCurrentDirectory(new File(System.getProperty("Facultad")));
 			int seleccion = fileChooser.showSaveDialog(fileChooser);
 			if (seleccion == JFileChooser.APPROVE_OPTION)
 				oFile  = fileChooser.getSelectedFile();
@@ -393,6 +394,7 @@ public class LeerArchivo {
 
 				while(k < datos.length ){
 
+					
 
 					vector.add(k,Integer.parseInt(datos[k]));
 					k++;

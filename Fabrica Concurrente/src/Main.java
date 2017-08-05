@@ -21,8 +21,86 @@ import Robots.Robot_2;
 import Robots.Robot_3;
 
 public class Main {
+	
+	public static void main(String[] args) {	
+	
+		
+		LeerInvariantes oInvariantes = new LeerInvariantes();
+		oInvariantes.obtenerInvariantes("invariantes.txt");
+		
+	
 
-	public static void main(String[] args) {
+		LeerArchivo oArchivo = new LeerArchivo();
+		
+		HashMap<String,int[][]> datos = oArchivo.LeerHTML();
+		int tamano = datos.get("incidencia")[0].length;
+		Semaphore mutex = new Semaphore(1,true);
+		Tiempo tiempo = new Tiempo(tamano,mutex,"tiempo");
+		//System.out.println(tamano);
+		
+		
+		
+		RDP rdp = new RDP(datos.get("marcado"),datos.get("incidencia"),tiempo, oInvariantes);
+
+		Politicas politicas = new Politicas();
+
+
+
+		int[][] incidenciaRDP = rdp.getIncidencia();
+		int[][] marcadoRDP = rdp.getMarcado();
+
+		
+		Matriz incidencia = new Matriz(incidenciaRDP);
+		
+		Matriz marcado = new Matriz(marcadoRDP);
+		// Matriz transiciones = oArchivo.leerTxtFile();
+		Colas colas = new Colas(incidencia.getColCount());
+//		incidencia.imprimirMatriz();
+		
+		GestorDeMonitor gdm = new GestorDeMonitor(colas,politicas,rdp,mutex);
+		
+		//tina(incidencia);
+		List<Matriz> listaTransiciones = new ArrayList<>();
+		
+		List<actorNuevo> actores = new ArrayList<>();
+
+		listaTransiciones = oArchivo.leerTxtFile("hilos");
+		
+		List<Matriz> rep = new ArrayList<>();
+		
+		rep = oArchivo.leerTxtFile("rep");
+		
+		
+		for(int i = 0;i<listaTransiciones.size();i++){
+			/*listaTransiciones.get(i).imprimirMatriz();
+			System.out.println("----------------");*/
+			
+			actorNuevo temporal = new actorNuevo(listaTransiciones.get(i),gdm,i,rep.get(i).getVal(0, 0));
+			actores.add(i,temporal);
+
+			
+		}
+		
+	/*	for(int j = 0;j<actores.size();j++){
+			try {
+				actores.get(j).getThread().join();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}*/
+
+
+		/*Matriz prueba = new Matriz(1,4);
+		prueba.setDato(0, 0, 15);
+		prueba.setDato(0, 1, 10);
+		prueba.setDato(0, 2, 25);
+		prueba.setDato(0, 3, 20);*/
+
+		rdp.getContadorTinvariante().imprimirMatrizI();
+	}
+
+	public static void mainRepuesto(String[] args) {
 		// TODO Auto-generated method stub
 
 		LeerInvariantes oInvariantes = new LeerInvariantes();
@@ -35,7 +113,7 @@ public class Main {
 		HashMap<String,int[][]> datos = oArchivo.LeerHTML();
 		int tamano = datos.get("incidencia")[0].length;
 		Semaphore mutex = new Semaphore(1,true);
-		Tiempo tiempo = new Tiempo(tamano,mutex);
+		Tiempo tiempo = new Tiempo(tamano,mutex,"tiempo");
 		//System.out.println(tamano);
 		
 		

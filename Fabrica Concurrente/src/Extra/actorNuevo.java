@@ -10,18 +10,28 @@ import Monitor.GestorDeMonitor;
  */
 
 public class actorNuevo implements Runnable {
-	
+
 	private Matriz secuencia;
 	private int estadoActual;	//Para que tienen estado??? Para saber si esta dormido el hilo?
 	private GestorDeMonitor gdm;
 	private Thread yo;
 	private int id;
-	
+	private int cantidadVeces;
 	public actorNuevo(Matriz secuencia, GestorDeMonitor gdm, int id){
 		this.id = id;
 		this.secuencia = secuencia;
 		this.gdm = gdm;
+		cantidadVeces = -1;
 		yo = new Thread(this);
+		yo.start();
+	}
+	public actorNuevo(Matriz secuencia, GestorDeMonitor gdm, int id, int cantidadVeces){
+		this.id = id;
+		this.secuencia = secuencia;
+		this.gdm = gdm;
+		this.cantidadVeces = cantidadVeces;
+		yo = new Thread(this);
+
 		yo.start();
 	}
 	/*
@@ -30,22 +40,39 @@ public class actorNuevo implements Runnable {
 	 * Se carga la secuencia y el gestor de monitor. Se comienza la ejecucion del hilo.
 	 * @see java.lang.Runnable#run()
 	 */
-	
+
 	public void run(){
-		
+
 		int i;
-		while(true){
-			
-			for(i = 0; i<secuencia.getColCount();i++){
-				//System.out.println("Soy "+this.getID()+" quiero ejecutar: "+secuencia.getVal(0, i));
-				if(gdm.Disparar(secuencia.getVal(0, i), this)){
-					
-				}else{
-					i--;
+		if(this.cantidadVeces == -1){
+			while(true){
+
+				for(i = 0; i<secuencia.getColCount();i++){
+					//System.out.println("Soy "+this.getID()+" quiero ejecutar: "+secuencia.getVal(0, i));
+					if(gdm.Disparar(secuencia.getVal(0, i), this)){
+
+					}else{
+						i--;
+					}
+
+					//Ejecutar accion. Falta tiempo.
+					//System.out.println("Hilo " + getID() + ": "  + "Dispare "  + "la transicion "+ secuencia.getVal(0, i));
+				}
+			}
+		}else{
+			for(int j = 0;j<this.cantidadVeces;j++){
+				for(i = 0; i<secuencia.getColCount();i++){
+					//System.out.println("Soy "+this.getID()+" quiero ejecutar: "+secuencia.getVal(0, i));
+					if(gdm.Disparar(secuencia.getVal(0, i), this)){
+
+					}else{
+						i--;
+					}
+
+					//Ejecutar accion. Falta tiempo.
+					//System.out.println("Hilo " + getID() + ": "  + "Dispare "  + "la transicion "+ secuencia.getVal(0, i));
 				}
 				
-				//Ejecutar accion. Falta tiempo.
-				//System.out.println("Hilo " + getID() + ": "  + "Dispare "  + "la transicion "+ secuencia.getVal(0, i));
 			}
 		}
 		
@@ -55,24 +82,24 @@ public class actorNuevo implements Runnable {
 	 * Este metodo tambien se encargara de ejecutar la accion correspondiente.
 	 * Y de imprimir en consola la ejecucion exitosa.
 	 */
-	
+
 	public void setEstado(int estado){
 		this.estadoActual = estado;
 	}
-	
+
 	public int getEstado(){
 		return this.estadoActual;
 	}
-	
+
 	public void setSecuencia(Matriz secuencia){
 		this.secuencia = secuencia;	
 	}
-	
+
 	public int getID(){
 		return this.id;
 	}
 	public Thread getThread(){
 		return this.yo;
 	}
-	}
+}
 

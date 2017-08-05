@@ -19,14 +19,14 @@ public class Tiempo {
 	private Semaphore mutex;
 	long tiempoDormir;
 
-	public Tiempo(int cantTransiciones, Semaphore mutex){
+	public Tiempo(int cantTransiciones, Semaphore mutex,String txtTiempo){
 		esperando = new Matriz(cantTransiciones,1);
 		//esperando.productoPorEscalar(0);
 		for(int j = 0;j<cantTransiciones;j++){
 			esperando.setDato(j, 0, -1);
 		}
 		this.mutex = mutex;
-		parseTxtFileTiempo();
+		parseTxtFileTiempo(txtTiempo);
 
 		for(int i=0;i<cantTransiciones;i++){
 
@@ -146,13 +146,13 @@ private boolean antesVentana(int transicion,long ahora){
 		esperando.setDato(transicion, 0, -1);
 	}
 
-	private void parseTxtFileTiempo(){
+	private void parseTxtFileTiempo(String nombreArchivo){
 		int max = 20;
 		FileReader input;
 		int[][] trans= new int[max][max];
 		List<Integer> vector = new ArrayList<>();
 		List<Matriz> matrices = new ArrayList<>();
-		String nombreArchivo = "tiempo";
+		//String nombreArchivo = "tiempo";
 
 		try {
 

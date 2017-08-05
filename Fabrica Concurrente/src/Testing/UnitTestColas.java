@@ -29,6 +29,40 @@ public class UnitTestColas {
 		
 	}
 	
+	@Test
+	public void testColaNegativo(){
+		Queue<Object> fifo = new LinkedList<>();
+		
+		Object o1 = new Object();
+		Object o2 = new Object();
+		Object o3 = new Object();
+		
+		
+		fifo.add(o3);
+		fifo.add(o2);
+		fifo.add(o1);
+		
+		assertNotEquals(fifo.poll(),o2);
+		
+	}
+	
+	@Test
+	public void testColaNegativo2(){
+		Queue<Object> fifo = new LinkedList<>();
+		
+		Object o1 = new Object();
+		Object o2 = new Object();
+		Object o3 = new Object();
+		
+		
+		fifo.add(o3);
+		fifo.add(o2);
+		fifo.add(o1);
+		
+		assertNotEquals(fifo.poll(),o1);
+		
+	}
+	
 	
 
 }
