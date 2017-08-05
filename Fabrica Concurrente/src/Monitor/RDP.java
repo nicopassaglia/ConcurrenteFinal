@@ -161,6 +161,11 @@ public class RDP {
 	public Matriz getMarcadoM(){
 		return this.marcadoM;
 	}
+	
+	public void setMarcado(Matriz marc){
+		this.marcadoM = marc;
+	}
+	
 	public long getTiempo(){
 		return tiempo.getTiempo();
 	}
@@ -180,7 +185,7 @@ public class RDP {
 		return;
 	}
 	
-	private boolean comprobarPinvariante(){
+	public boolean comprobarPinvariante(){
 		/* Obtengo los resultados de las ecuaciones del P-Invariante */
 		int resultado;
 		int i;

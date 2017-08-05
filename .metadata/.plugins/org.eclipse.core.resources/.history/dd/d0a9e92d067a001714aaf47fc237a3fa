@@ -1,0 +1,9 @@
+package Testing;
+
+public class testPinvariante {
+	
+	public void testPinvariante(){
+		
+	}
+
+}
