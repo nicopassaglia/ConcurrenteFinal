@@ -267,4 +267,10 @@ public class Matriz
 
 		return devolver;
 	}
+	
+	public void contar(int fila, int columna){
+		dato[fila][columna]++;
+		return;
+	}
+	
 }

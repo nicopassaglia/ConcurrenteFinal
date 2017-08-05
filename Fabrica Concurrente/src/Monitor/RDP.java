@@ -15,8 +15,10 @@ public class RDP {
 	private Matriz tinvariante;
 	private Matriz res_pinvariante;
 	private Matriz cont_tinvariante;
+	private Matriz cont_transiciones;
 
 	public RDP(int[][] marcadoInicial, int[][] incidencia,Tiempo tiempo, LeerInvariantes invariantes){
+	
 		this.marcado = marcadoInicial;
 		this.incidencia = incidencia;
 
@@ -25,9 +27,15 @@ public class RDP {
 		this.tiempo = tiempo;
 		this.pinvariante = invariantes.getPinvariante();
 		this.tinvariante = invariantes.getTinvariante();
-		this.pinvariante.imprimirMatriz();
 		this.res_pinvariante = new Matriz(this.pinvariante.getFilCount(), 1);
 		this.cont_tinvariante = new Matriz(this.tinvariante.getFilCount(), 1);
+		this.cont_transiciones = new Matriz(this.tinvariante.getColCount(), 1);
+		this.cont_tinvariante.Clear();
+		this.cont_transiciones.Clear();
+		
+		obtenerResultadosPinvariante();
+		// Capaz haya que poner este metodo en el constructor.
+		
 	}
 	
 	public RDP(int[][] marcadoInicial, int[][] incidencia,Tiempo tiempo){
@@ -94,6 +102,13 @@ public class RDP {
 				sensiNuevas = sensiNuevas.minus(sensiViejas);
 				tiempo.setNuevoTimeStamp(sensiNuevas);
 				tiempo.resetEsperando(transicion);
+				
+				if(!comprobarPinvariante()){
+					throw new RuntimeException("El P-invariante no se cumplio.");
+				}
+				
+				contarTinvariante(transicion);
+				
 				return 1;
 
 
@@ -148,5 +163,49 @@ public class RDP {
 	public long getTiempo(){
 		return tiempo.getTiempo();
 	}
+	
+	private void obtenerResultadosPinvariante(){
+		int i;
+		int j;
+		int resultado;
+		/* Obtengo los resultados de las ecuaciones del P-Invariante */
+		for(i = 0; i < this.pinvariante.getFilCount(); i++){
+			resultado = 0;
+			for(j =0; j<this.pinvariante.getColCount(); j++){
+				resultado += this.pinvariante.getVal(i, j) * this.marcadoM.getVal(0, j);
+			}
+			this.res_pinvariante.setDato(i, 0, resultado);
+		}
+		return;
+	}
+	
+	private boolean comprobarPinvariante(){
+		/* Obtengo los resultados de las ecuaciones del P-Invariante */
+		int resultado;
+		int i;
+		int j;
+		
+		for(i = 0; i < this.pinvariante.getFilCount(); i++){
+			resultado = 0;
+			
+			for(j =0; j<this.pinvariante.getColCount(); j++){
+				resultado += this.pinvariante.getVal(i, j) * this.marcadoM.getVal(0, j);
+			}
 
+			if(resultado != this.res_pinvariante.getVal(i, 0)){
+				return false;
+			}
+		}
+		
+		return true;
+	}
+	
+	private void contarTinvariante(int transicion){
+		this.tinvariante.contar(0, transicion);
+		
+		
+		
+		return;		
+	}
+	
 }

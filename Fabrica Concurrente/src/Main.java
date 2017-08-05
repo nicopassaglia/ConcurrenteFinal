@@ -26,13 +26,21 @@ public class Main {
 		// TODO Auto-generated method stub
 
 		LeerInvariantes oInvariantes = new LeerInvariantes();
+		oInvariantes.obtenerInvariantes("invariantes.txt");
+		
+	
+
 		LeerArchivo oArchivo = new LeerArchivo();
+		
 		HashMap<String,int[][]> datos = oArchivo.LeerHTML();
 		int tamano = datos.get("incidencia")[0].length;
 		Semaphore mutex = new Semaphore(1,true);
 		Tiempo tiempo = new Tiempo(tamano,mutex);
-		System.out.println(tamano);
-		RDP rdp = new RDP(datos.get("marcado"),datos.get("incidencia"),tiempo);
+		//System.out.println(tamano);
+		
+		
+		
+		RDP rdp = new RDP(datos.get("marcado"),datos.get("incidencia"),tiempo, oInvariantes);
 
 		Politicas politicas = new Politicas();
 

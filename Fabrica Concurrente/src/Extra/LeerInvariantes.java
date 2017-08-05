@@ -12,7 +12,6 @@ public class LeerInvariantes {
 	private Matriz t_invariante;
 	
 	public LeerInvariantes (){
-		obtenerInvariantes("invariantes.txt");
 		p_invariante = null;
 		t_invariante = null;
 	}
@@ -108,17 +107,18 @@ public class LeerInvariantes {
 		}
 		
 		//this.t_invariante.imprimirMatriz();
-		this.p_invariante.imprimirMatrizI();
-		System.out.println(this.p_invariante.getFilCount());
+		//this.p_invariante.imprimirMatrizI();
+		//System.out.println(this.p_invariante.getFilCount());
 		
+		return;
 	}
 
 	public Matriz getPinvariante(){
-		return p_invariante;
+		return this.p_invariante;
 	}
 	
 	public Matriz getTinvariante(){
-		return t_invariante;
+		return this.t_invariante;
 	}
 
 }
