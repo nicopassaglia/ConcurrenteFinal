@@ -13,11 +13,14 @@ public class GestorDeMonitor {
 	public Politicas politicas;
 	public RDP rdp;
 	private int k;
+	private int numero_disparos_realizados;
+	private int numero_disparos_objetivo;
 	private Matriz sensiViejas;
 	private Matriz sensiNuevas;
 	private Matriz quienes;
 	private Matriz and;
 	private int cual;
+	private boolean first_time;
 
 	public GestorDeMonitor(Colas colas, Politicas politicas, RDP rdp,Semaphore mutex){
 
@@ -26,6 +29,21 @@ public class GestorDeMonitor {
 		this.colas = colas;
 		this.politicas = politicas;
 		this.rdp = rdp;
+		this.numero_disparos_objetivo = 0;
+		this.numero_disparos_realizados = 0;
+		this.first_time = true;
+	}
+	
+	public GestorDeMonitor(Colas colas, Politicas politicas, RDP rdp,Semaphore mutex, int numero_disparos){
+
+	//	this.mutex = new Semaphore(1,true);
+		this.mutex = mutex;
+		this.colas = colas;
+		this.politicas = politicas;
+		this.rdp = rdp;
+		this.numero_disparos_objetivo = numero_disparos;
+		this.numero_disparos_realizados = 0;
+		this.first_time = true;
 	}
 
 	public boolean Disparar(int transicion, actorNuevo actor){
@@ -44,7 +62,12 @@ public class GestorDeMonitor {
 				k = rdp.disparar(transicion);
 				
 				if(k==1){
-					System.out.println("se ejecuto transicion :" +transicion +" por el hilo:"+actor.getID()+" en el instante:"+System.currentTimeMillis());
+					if(this.numero_disparos_objetivo != 0 && this.numero_disparos_objetivo == this.numero_disparos_realizados){
+						stopExecution();
+					}
+					this.numero_disparos_realizados++;
+					
+					System.out.println("se ejecuto transicion :" +transicion +" por el hilo:"+actor.getID()+" en el instante:"+System.currentTimeMillis());				
 					sensiNuevas=rdp.sensibilizadas();
 					//sensiNuevas.imprimirMatriz();
 					//colas.quienesEstan().imprimirMatriz();
@@ -109,7 +132,24 @@ public class GestorDeMonitor {
 		this.mutex.release();
 	}
 
-
+	public void stopExecution(){
+		if(first_time){
+			first_time = false;
+			System.out.println("####Cantidad de T-Invariantes####");
+			this.rdp.getContadorTinvariante().imprimirMatriz();
+		}
+		releaseMutex();
+		
+		try {
+			synchronized(this){
+				wait();
+			}
+			
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 
 }

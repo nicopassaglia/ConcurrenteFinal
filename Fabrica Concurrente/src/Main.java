@@ -58,7 +58,7 @@ public class Main {
 		Colas colas = new Colas(incidencia.getColCount());
 		//		incidencia.imprimirMatriz();
 
-		GestorDeMonitor gdm = new GestorDeMonitor(colas,politicas,rdp,mutex);
+		GestorDeMonitor gdm = new GestorDeMonitor(colas,politicas,rdp,mutex, 1000);
 
 		//tina(incidencia);
 		List<Matriz> listaTransiciones = new ArrayList<>();
