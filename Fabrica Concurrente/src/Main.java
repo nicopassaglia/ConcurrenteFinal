@@ -27,12 +27,13 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		int cantidad_de_disparos = 0;
 		String red="";
 		
 
 		Object[] options = {"Maquinas",
 				"Productor-Consumidor",
-		"Red simple"};
+		"Red simple", "Red simple 2"};
 		int n = JOptionPane.showOptionDialog(null,
 				"Elija la red "
 						+ "que desea ejecutar?",
@@ -52,6 +53,9 @@ public class Main {
 			break;
 		case 2:
 			red = "Simple1";
+			break;
+		case 3:
+			red = "Simple2";
 			break;
 		default:
 			red ="";
@@ -88,7 +92,7 @@ public class Main {
 		Colas colas = new Colas(incidencia.getColCount());
 		//		incidencia.imprimirMatriz();
 
-		GestorDeMonitor gdm = new GestorDeMonitor(colas,politicas,rdp,mutex, 1000);
+		GestorDeMonitor gdm = new GestorDeMonitor(colas,politicas,rdp,mutex, cantidad_de_disparos);
 
 		//tina(incidencia);
 		List<Matriz> listaTransiciones = new ArrayList<>();

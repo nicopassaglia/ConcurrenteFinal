@@ -75,6 +75,7 @@ public class RDP {
 	}
 
 	public int disparar(int transicion){
+		boolean comprobar_pinvariante;
 		boolean estado;
 		Matriz sensiViejas;
 		Matriz sensiNuevas;
@@ -103,7 +104,8 @@ public class RDP {
 				tiempo.setNuevoTimeStamp(sensiNuevas);
 				tiempo.resetEsperando(transicion);
 				
-				if(!comprobarPinvariante()){
+				comprobar_pinvariante = comprobarPinvariante();
+				if(!comprobar_pinvariante){
 					throw new RuntimeException("El P-invariante no se cumplio.");
 				}
 				
