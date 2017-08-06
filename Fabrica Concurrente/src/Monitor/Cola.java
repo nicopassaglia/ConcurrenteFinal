@@ -19,6 +19,10 @@ public class Cola {
 		return this.tipoCola;
 	}
 	
+	public Queue<Runnable> getCola(){
+		return fifo;
+	}
+	
 	
 	public Runnable obtenerProceso(){
 		Runnable proceso = fifo.poll();
@@ -28,10 +32,11 @@ public class Cola {
 	}
 	
 	public boolean meterEnCola(Thread proceso){
-	
+		
 		try {
 			synchronized(proceso){
 			fifo.add(proceso);
+			//System.out.println("Proceso agregado");
 			proceso.wait();
 			}
 			return true;

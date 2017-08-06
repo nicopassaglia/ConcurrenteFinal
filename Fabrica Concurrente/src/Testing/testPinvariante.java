@@ -28,13 +28,13 @@ public class testPinvariante {
 	@Test
 	public void testPinvariante(){
 
-		LeerInvariantes oInvariantes = new LeerInvariantes();
+		LeerInvariantes oInvariantes = new LeerInvariantes("Maquinas");
 		oInvariantes.obtenerInvariantes("invariantes.txt");
-		LeerArchivo oArchivo = new LeerArchivo();
+		LeerArchivo oArchivo = new LeerArchivo("Maquinas");
 		HashMap<String,int[][]> datos = oArchivo.LeerHTML();
 		int tamano = datos.get("incidencia")[0].length;
 		Semaphore mutex = new Semaphore(1,true);
-		Tiempo tiempo = new Tiempo(tamano,mutex,"tiempo");
+		Tiempo tiempo = new Tiempo(tamano,mutex,"Maquinas");
 		RDP rdp = new RDP(datos.get("marcado"),datos.get("incidencia"),tiempo, oInvariantes);
 		int[][] incidenciaRDP = rdp.getIncidencia();
 		int[][] marcadoRDP = rdp.getMarcado();
@@ -58,13 +58,13 @@ public class testPinvariante {
 	@Test
 	public void testPinvariante2(){
 
-		LeerInvariantes oInvariantes = new LeerInvariantes();
+		LeerInvariantes oInvariantes = new LeerInvariantes("Maquinas");
 		oInvariantes.obtenerInvariantes("invariantes.txt");
-		LeerArchivo oArchivo = new LeerArchivo();
+		LeerArchivo oArchivo = new LeerArchivo("Maquinas");
 		HashMap<String,int[][]> datos = oArchivo.LeerHTML();
 		int tamano = datos.get("incidencia")[0].length;
 		Semaphore mutex = new Semaphore(1,true);
-		Tiempo tiempo = new Tiempo(tamano,mutex,"tiempo");
+		Tiempo tiempo = new Tiempo(tamano,mutex,"Maquinas");
 		RDP rdp = new RDP(datos.get("marcado"),datos.get("incidencia"),tiempo, oInvariantes);
 		int[][] incidenciaRDP = rdp.getIncidencia();
 		int[][] marcadoRDP = rdp.getMarcado();
@@ -91,20 +91,20 @@ public class testPinvariante {
 	@Test
 	public void testPinvariante3(){
 
-		LeerInvariantes oInvariantes = new LeerInvariantes();
+		LeerInvariantes oInvariantes = new LeerInvariantes("Maquinas");
 		oInvariantes.obtenerInvariantes("invariantes.txt");
-		LeerArchivo oArchivo = new LeerArchivo();
+		LeerArchivo oArchivo = new LeerArchivo("Maquinas");
 		HashMap<String,int[][]> datos = oArchivo.LeerHTML();
 		int tamano = datos.get("incidencia")[0].length;
 		Semaphore mutex = new Semaphore(1,true);
-		Tiempo tiempo = new Tiempo(tamano,mutex,"tiempo");
+		Tiempo tiempo = new Tiempo(tamano,mutex,"Maquinas");
 		RDP rdp = new RDP(datos.get("marcado"),datos.get("incidencia"),tiempo, oInvariantes);
 		int[][] incidenciaRDP = rdp.getIncidencia();
 		int[][] marcadoRDP = rdp.getMarcado();
 		Matriz incidencia = new Matriz(incidenciaRDP);
 		Matriz marcado = new Matriz(marcadoRDP);
 
-
+		//marcado.imprimirMatriz();
 		Matriz marcadoTemporal = new Matriz(1,marcado.getColCount());
 		
 
@@ -118,13 +118,13 @@ public class testPinvariante {
 	@Test
 	public void testPinvariante4(){
 
-		LeerInvariantes oInvariantes = new LeerInvariantes();
+		LeerInvariantes oInvariantes = new LeerInvariantes("Maquinas");
 		oInvariantes.obtenerInvariantes("invariantes.txt");
-		LeerArchivo oArchivo = new LeerArchivo();
+		LeerArchivo oArchivo = new LeerArchivo("Maquinas");
 		HashMap<String,int[][]> datos = oArchivo.LeerHTML();
 		int tamano = datos.get("incidencia")[0].length;
 		Semaphore mutex = new Semaphore(1,true);
-		Tiempo tiempo = new Tiempo(tamano,mutex,"tiempo");
+		Tiempo tiempo = new Tiempo(tamano,mutex,"Maquinas");
 		RDP rdp = new RDP(datos.get("marcado"),datos.get("incidencia"),tiempo, oInvariantes);
 		int[][] incidenciaRDP = rdp.getIncidencia();
 		int[][] marcadoRDP = rdp.getMarcado();

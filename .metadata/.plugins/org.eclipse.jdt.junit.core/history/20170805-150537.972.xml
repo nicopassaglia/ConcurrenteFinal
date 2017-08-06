@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="testPinvariante" project="Fabrica Concurrente" tests="4" started="4" failures="0" errors="0" ignored="0">
-  <testsuite name="Testing.testPinvariante" time="22.165">
-    <testcase name="testPinvariante" classname="Testing.testPinvariante" time="6.25"/>
-    <testcase name="testPinvariante2" classname="Testing.testPinvariante" time="6.781"/>
-    <testcase name="testPinvariante3" classname="Testing.testPinvariante" time="6.181"/>
-    <testcase name="testPinvariante4" classname="Testing.testPinvariante" time="2.952"/>
-  </testsuite>
-</testrun>

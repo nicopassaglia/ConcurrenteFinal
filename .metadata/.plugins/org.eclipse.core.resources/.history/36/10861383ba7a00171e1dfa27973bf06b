@@ -1,0 +1,200 @@
+package Testing;
+
+import static org.junit.Assert.*;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+import org.junit.Test;
+
+import Extra.actorNuevo;
+import Extra.actorPrueba;
+import Monitor.Cola;
+
+public class UnitTestColas {
+
+	@Test
+	public void testCola(){
+		Queue<Object> fifo = new LinkedList<>();
+
+		Object o1 = new Object();
+		Object o2 = new Object();
+		Object o3 = new Object();
+
+
+		fifo.add(o3);
+		fifo.add(o2);
+		fifo.add(o1);
+
+		assertEquals(fifo.poll(),o3);
+
+	}
+
+	@Test
+	public void testColaNegativo(){
+		Queue<Object> fifo = new LinkedList<>();
+
+		Object o1 = new Object();
+		Object o2 = new Object();
+		Object o3 = new Object();
+
+
+		fifo.add(o3);
+		fifo.add(o2);
+		fifo.add(o1);
+
+		assertNotEquals(fifo.poll(),o2);
+
+	}
+
+	@Test
+	public void testColaNegativo2(){
+		Queue<Object> fifo = new LinkedList<>();
+
+		Object o1 = new Object();
+		Object o2 = new Object();
+		Object o3 = new Object();
+
+
+		fifo.add(o3);
+		fifo.add(o2);
+		fifo.add(o1);
+
+		assertNotEquals(fifo.poll(),o1);
+
+	}
+	
+	@Test
+	public void meterEnCola(){
+		Cola cola = new Cola("prueba");
+		
+		actorPrueba act2 = new actorPrueba();
+		//actorPrueba act3 = new actorPrueba();
+
+	
+		Thread t2 = new Thread(act2);
+		Thread t3 = new Thread(act2);
+	
+		t2.start();
+		t3.start();
+
+		Runnable myRunnable = new Runnable(){
+
+			public void run(){
+				cola.meterEnCola(t2);
+
+			}
+		};
+		Thread thread = new Thread(myRunnable);
+		thread.start();
+		Runnable myRunnable2 = new Runnable(){
+
+			public void run(){
+				cola.meterEnCola(t3);
+
+			}
+		};
+		
+		Thread thread2 = new Thread(myRunnable2);
+		thread2.start();
+
+
+		
+		
+		
+		Queue<Runnable> fifoLocal = new LinkedList<>();
+		fifoLocal.add(t2);
+		fifoLocal.add(t3);
+		assertArrayEquals(fifoLocal.toArray(),cola.getCola().toArray());
+	}
+
+	@Test
+	public void testColaDormidos(){
+		Cola cola = new Cola("prueba");
+	
+		/*actorPrueba act2 = new actorPrueba();
+		actorPrueba act3 = new actorPrueba();*/
+
+	
+		Thread t2 = new Thread();
+		Thread t3 = new Thread();
+	
+		t2.start();
+		t3.start();
+
+		Runnable myRunnable = new Runnable(){
+
+			public void run(){
+				cola.meterEnCola(t2);
+
+			}
+		};
+		Thread thread = new Thread(myRunnable);
+		thread.start();
+		Runnable myRunnable2 = new Runnable(){
+
+			public void run(){
+				cola.meterEnCola(t3);
+
+			}
+		};
+		
+		Thread thread2 = new Thread(myRunnable2);
+		thread2.start();
+
+
+		
+
+		assertEquals(t2,cola.obtenerProceso());
+	}
+	
+
+	@Test
+	public void testColaDormidosNegativo(){
+		Cola cola = new Cola("prueba");
+	
+		actorPrueba act2 = new actorPrueba();
+		actorPrueba act3 = new actorPrueba();
+
+		
+		Thread t2 = new Thread(act2);
+		Thread t3 = new Thread(act3);
+	
+		t2.start();
+		t3.start();
+
+		Runnable myRunnable = new Runnable(){
+
+			public void run(){
+				cola.meterEnCola(t2);
+
+			}
+		};
+		Thread thread = new Thread(myRunnable);
+		thread.start();
+		Runnable myRunnable2 = new Runnable(){
+
+			public void run(){
+				cola.meterEnCola(t3);
+
+			}
+		};
+		
+		Thread thread2 = new Thread(myRunnable2);
+		thread2.start();
+
+		/*try {
+			Thread.currentThread().sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+
+
+
+		assertNotEquals(t3,cola.obtenerProceso());
+	}
+
+
+
+}

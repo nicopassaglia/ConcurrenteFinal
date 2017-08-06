@@ -10,10 +10,11 @@ public class LeerInvariantes {
 
 	private Matriz p_invariante;
 	private Matriz t_invariante;
-	
-	public LeerInvariantes (){
+	private String nombreRed="";
+	public LeerInvariantes (String nombreRed){
 		p_invariante = null;
 		t_invariante = null;
+		this.nombreRed = nombreRed;
 	}
 
 
@@ -36,7 +37,7 @@ public class LeerInvariantes {
 		//Guardo los datos del .txt en los vectores.
 		estado = 2;
 		try{
-			input = new FileReader("src/Extra/"+nombreArchivo+".txt");
+			input = new FileReader("src/Extra/"+this.nombreRed+"/invariantes.txt");
 			BufferedReader bufRead = new BufferedReader(input);
 			String myLine = null;
 

@@ -24,17 +24,17 @@ public class systemTest {
 		
 			// TODO Auto-generated method stub
 
-			LeerInvariantes oInvariantes = new LeerInvariantes();
+			LeerInvariantes oInvariantes = new LeerInvariantes("Simple1");
 			oInvariantes.obtenerInvariantes("invariantes-prueba");
 			
 		
 
-			LeerArchivo oArchivo = new LeerArchivo();
+			LeerArchivo oArchivo = new LeerArchivo("Simple1");
 			
 			HashMap<String,int[][]> datos = oArchivo.LeerHTML();
 			int tamano = datos.get("incidencia")[0].length;
 			Semaphore mutex = new Semaphore(1,true);
-			Tiempo tiempo = new Tiempo(tamano,mutex,"tiempoPrueba");
+			Tiempo tiempo = new Tiempo(tamano,mutex,"Simple1");
 			//System.out.println(tamano);
 			
 			
@@ -72,7 +72,12 @@ public class systemTest {
 				actores.add(i,temporal);
 				
 			}
-			
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 		
 

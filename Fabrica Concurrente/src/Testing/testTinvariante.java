@@ -22,17 +22,17 @@ public class testTinvariante {
 	
 	@Test
 	public void testInvariante(){
-		LeerInvariantes oInvariantes = new LeerInvariantes();
+		LeerInvariantes oInvariantes = new LeerInvariantes("Maquinas");
 		oInvariantes.obtenerInvariantes("invariantes.txt");
 		
 	
 
-		LeerArchivo oArchivo = new LeerArchivo();
+		LeerArchivo oArchivo = new LeerArchivo("Maquinas");
 		
 		HashMap<String,int[][]> datos = oArchivo.LeerHTML();
 		int tamano = datos.get("incidencia")[0].length;
 		Semaphore mutex = new Semaphore(1,true);
-		Tiempo tiempo = new Tiempo(tamano,mutex,"tiempo");
+		Tiempo tiempo = new Tiempo(tamano,mutex,"Maquinas");
 		//System.out.println(tamano);
 		
 		
@@ -65,7 +65,7 @@ public class testTinvariante {
 		
 		List<Matriz> rep = new ArrayList<>();
 		
-		rep = oArchivo.leerTxtFile("rep");
+		rep = oArchivo.leerTxtFile("repeticiones");
 		
 		
 		for(int i = 0;i<listaTransiciones.size();i++){

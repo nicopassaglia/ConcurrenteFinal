@@ -3,6 +3,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.Semaphore;
 
+import javax.swing.JOptionPane;
+
 import Extra.LeerArchivo;
 import Extra.LeerInvariantes;
 import Extra.Matriz;
@@ -25,18 +27,46 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		String red="";
+		
 
-		LeerInvariantes oInvariantes = new LeerInvariantes();
+		Object[] options = {"Maquinas",
+				"Productor-Consumidor",
+		"Red simple"};
+		int n = JOptionPane.showOptionDialog(null,
+				"Elija la red "
+						+ "que desea ejecutar?",
+						"¿Que red desea ejecutar?",
+						JOptionPane.YES_NO_CANCEL_OPTION,
+						JOptionPane.QUESTION_MESSAGE,
+						null,
+						options,
+						options[2]);
+		System.out.println("AAAAAAAAAA"+n);
+		switch(n){
+		case 0:
+			red = "Maquinas";
+			break;
+		case 1:
+			red = "Productor-Consumidor";
+			break;
+		case 2:
+			red = "Simple1";
+			break;
+		default:
+			red ="";
+			break;
+			
+		}
+		
+		LeerInvariantes oInvariantes = new LeerInvariantes(red);
 		oInvariantes.obtenerInvariantes("invariantes.txt");
-
-
-
-		LeerArchivo oArchivo = new LeerArchivo();
+		LeerArchivo oArchivo = new LeerArchivo(red);
 
 		HashMap<String,int[][]> datos = oArchivo.LeerHTML();
 		int tamano = datos.get("incidencia")[0].length;
 		Semaphore mutex = new Semaphore(1,true);
-		Tiempo tiempo = new Tiempo(tamano,mutex,"tiempo");
+		Tiempo tiempo = new Tiempo(tamano,mutex,red);
 		//System.out.println(tamano);
 
 

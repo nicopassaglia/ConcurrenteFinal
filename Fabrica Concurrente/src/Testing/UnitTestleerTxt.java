@@ -12,7 +12,7 @@ public class UnitTestleerTxt {
 
 	@Test
 	public void leerTxtFile(){
-		LeerArchivo la = new LeerArchivo();
+		LeerArchivo la = new LeerArchivo("Maquinas");
 	
 		List<Matriz> A = la.leerTxtFile("hilos");
 		

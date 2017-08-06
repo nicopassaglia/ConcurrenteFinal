@@ -30,4 +30,5 @@
 <fullyQualifiedTypeName name="org.junit.Test"/>
 <fullyQualifiedTypeName name="Monitor.Politicas"/>
 <fullyQualifiedTypeName name="Extra.Matriz"/>
+<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
 </qualifiedTypeNameHistroy>

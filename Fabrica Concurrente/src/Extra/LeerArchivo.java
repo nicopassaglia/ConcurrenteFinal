@@ -41,6 +41,7 @@ public class LeerArchivo {
 	private String sAutomaticas = null;
 	private String sRed = null;
 	private String sTiempos;
+	private String nombreRed="";
 
 	public LeerArchivo(String sPrioridad, String sAutomaticas, String sRed, String sTiempos){
 		this.sAutomaticas = sAutomaticas;
@@ -49,21 +50,23 @@ public class LeerArchivo {
 		this.sTiempos = sTiempos;
 	}
 
-	public LeerArchivo(){
-
+	public LeerArchivo(String nombreRed){
+		this.nombreRed = nombreRed;
 	}
 
 	public HashMap<String,int[][]> LeerHTML(){
 		File oFile = null;
 		if (sRed == null){
-			JFileChooser fileChooser = new JFileChooser("D:\\Usuario\\Documents\\Facultad\\Concurrente");
+			/*JFileChooser fileChooser = new JFileChooser("D:\\Usuario\\Documents\\Facultad\\Concurrente\\Trabajo Final 2017\\ConcurrenteFinal\\Fabrica Concurrente\\src\\Extra\\Maquinas\\red.html");
 			//fileChooser.setCurrentDirectory(new File(System.getProperty("Facultad")));
 			int seleccion = fileChooser.showSaveDialog(fileChooser);
 			if (seleccion == JFileChooser.APPROVE_OPTION)
-				oFile  = fileChooser.getSelectedFile();
-		}
+				oFile  = fileChooser.getSelectedFile();*/
+		}/*
 		else
-			oFile = new File(System.getProperty("user.dir")+"/Facultad/"+"");
+			oFile = new File(System.getProperty("user.dir")+"/Facultad/"+"");*/
+		//oFile = new File("D:\\Usuario\\Documents\\Facultad\\Concurrente\\Trabajo Final 2017\\ConcurrenteFinal\\Fabrica Concurrente\\src\\Extra\\"+this.nombreRed+"\\red.html");
+		oFile = new File("src/Extra/"+this.nombreRed+"/red.html");
 		try {
 			html = Jsoup.parse(oFile,"UTF-8", "http://example.com/");
 			Elements tableElements = html.select("table");
@@ -377,7 +380,7 @@ public class LeerArchivo {
 
 		try {
 
-			input = new FileReader("src/Extra/"+nombreArchivo+".txt");
+			input = new FileReader("src/Extra/"+this.nombreRed+"/"+nombreArchivo+".txt");
 			BufferedReader bufRead = new BufferedReader(input);
 			String myLine = null;
 			int pos = 0;
