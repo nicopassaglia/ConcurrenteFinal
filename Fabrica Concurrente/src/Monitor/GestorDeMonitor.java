@@ -101,18 +101,8 @@ public class GestorDeMonitor {
 					System.out.println("ME DEBERIA DORMIR SOY "+ actor.getID() + " por " + tiempoDormir);
 					mutex.release();
 					
-				
-					try{
-						synchronized(this){
-							
-							wait(tiempoDormir);
-							System.out.println("ME DESPERTE :"+ actor.getID());
-						}
-					}
-					catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					sleep_thread(tiempoDormir, actor);
+					
 					
 					
 					
@@ -126,6 +116,20 @@ public class GestorDeMonitor {
 			e.printStackTrace();
 		}
 		return true;
+	}
+	
+	private void sleep_thread(long tiempoDormir, actorNuevo actor){
+		try{
+			synchronized(this){
+				
+				wait(tiempoDormir);
+				System.out.println("ME DESPERTE :"+ actor.getID());
+			}
+		}
+		catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void releaseMutex(){

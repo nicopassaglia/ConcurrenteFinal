@@ -106,7 +106,7 @@ public class RDP {
 				
 				comprobar_pinvariante = comprobarPinvariante();
 				if(!comprobar_pinvariante){
-					throw new RuntimeException("El P-invariante no se cumplio.");
+					error_pinvariante();
 				}
 				
 				contarTinvariante(transicion);
@@ -139,6 +139,10 @@ public class RDP {
 
 	public int[][] getIncidencia(){
 		return this.incidencia;
+	}
+	
+	private void error_pinvariante(){
+		throw new RuntimeException("El P-invariante no se cumplio.");
 	}
 
 	private void nuevoMarcado(int transicion){
