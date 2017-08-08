@@ -3,7 +3,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.Semaphore;
 
+import javax.swing.JOptionPane;
+
 import Extra.LeerArchivo;
+import Extra.LeerInvariantes;
 import Extra.Matriz;
 import Extra.actorNuevo;
 import Maquinas.Maquina_1;
@@ -21,12 +24,58 @@ import Robots.Robot_3;
 
 public class Main {
 
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		int cantidad_de_disparos = 0;
+		String red="";
+		
 
-		LeerArchivo oArchivo = new LeerArchivo();
+		Object[] options = {"Maquinas",
+				"Productor-Consumidor",
+		"Red simple", "Red simple 2"};
+		int n = JOptionPane.showOptionDialog(null,
+				"Elija la red "
+						+ "que desea ejecutar?",
+						"¿Que red desea ejecutar?",
+						JOptionPane.YES_NO_CANCEL_OPTION,
+						JOptionPane.QUESTION_MESSAGE,
+						null,
+						options,
+						options[2]);
+		System.out.println("AAAAAAAAAA"+n);
+		switch(n){
+		case 0:
+			red = "Maquinas";
+			break;
+		case 1:
+			red = "Productor-Consumidor";
+			break;
+		case 2:
+			red = "Simple1";
+			break;
+		case 3:
+			red = "Simple2";
+			break;
+		default:
+			red ="";
+			break;
+			
+		}
+		
+		LeerInvariantes oInvariantes = new LeerInvariantes(red);
+		oInvariantes.obtenerInvariantes("invariantes.txt");
+		LeerArchivo oArchivo = new LeerArchivo(red);
+
 		HashMap<String,int[][]> datos = oArchivo.LeerHTML();
-	
+		int tamano = datos.get("incidencia")[0].length;
+		Semaphore mutex = new Semaphore(1,true);
+		Tiempo tiempo = new Tiempo(tamano,mutex,red);
+		//System.out.println(tamano);
+
+
+
+		RDP rdp = new RDP(datos.get("marcado"),datos.get("incidencia"),tiempo, oInvariantes);
 
 		Politicas politicas = new Politicas();
 
@@ -35,23 +84,19 @@ public class Main {
 		int[][] incidenciaRDP = rdp.getIncidencia();
 		int[][] marcadoRDP = rdp.getMarcado();
 
-		
+
 		Matriz incidencia = new Matriz(incidenciaRDP);
-		
+
 		Matriz marcado = new Matriz(marcadoRDP);
-		
-		Semaphore mutex = new Semaphore(1,true);
-		Tiempo tiempo = new Tiempo(incidencia.getColCount(),mutex);
-		RDP rdp = new RDP(datos.get("marcado"),datos.get("incidencia"),tiempo);
 		// Matriz transiciones = oArchivo.leerTxtFile();
 		Colas colas = new Colas(incidencia.getColCount());
-//		incidencia.imprimirMatriz();
-		
-		GestorDeMonitor gdm = new GestorDeMonitor(colas,politicas,rdp,mutex);
-		
-		tina(incidencia);
+		//		incidencia.imprimirMatriz();
+
+		GestorDeMonitor gdm = new GestorDeMonitor(colas,politicas,rdp,mutex, cantidad_de_disparos);
+
+		//tina(incidencia);
 		List<Matriz> listaTransiciones = new ArrayList<>();
-		
+
 		List<actorNuevo> actores = new ArrayList<>();
 
 		listaTransiciones = oArchivo.leerTxtFile("hilos");
@@ -61,11 +106,11 @@ public class Main {
 			System.out.println("----------------");*/
 			actorNuevo temporal = new actorNuevo(listaTransiciones.get(i),gdm,i);
 			actores.add(i,temporal);
-			
+
 		}
-		
-		
-	
+
+
+
 
 		/* Matriz sensibilizadas = rdp.sensibilizadas();     
 
@@ -124,23 +169,25 @@ public class Main {
 
 	}
 	public static void tina(Matriz incidencia){
-		 String entradas = "";
-		 String salidas = "";
-		 String output;
-		
-		 for (int j=0; j<incidencia.getColCount(); j++){
-			 for (int i=0; i<incidencia.getFilCount(); i++){
-				 if(incidencia.getVal(i, j) == 1){
-					 salidas = salidas + " p" + i;
-				 }
-				 else if(incidencia.getVal(i, j) == -1){
-					 entradas = entradas + " p" + i;
-				 }
-			 }
-			 output = "tr" + entradas + " ->" + salidas;
-			 System.out.println(output);
-		 }
-		
+		String entradas = "";
+		String salidas = "";
+		String output;
+
+		for (int j=0; j<incidencia.getColCount(); j++){
+			for (int i=0; i<incidencia.getFilCount(); i++){
+				if(incidencia.getVal(i, j) == 1){
+					salidas = salidas + " p" + i;
+				}
+				else if(incidencia.getVal(i, j) == -1){
+					entradas = entradas + " p" + i;
+				}
+			}
+			output = "tr t" + j + entradas + " ->" + salidas;
+			System.out.println(output);
+			entradas = "";
+			salidas = "";
+		}
+
 	}
 
 }
