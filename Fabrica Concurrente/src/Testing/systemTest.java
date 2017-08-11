@@ -13,6 +13,7 @@ import Extra.Matriz;
 import Extra.actorNuevo;
 import Monitor.Colas;
 import Monitor.GestorDeMonitor;
+import Monitor.Invariantes;
 import Monitor.Politicas;
 import Monitor.RDP;
 import Monitor.Tiempo;
@@ -38,8 +39,8 @@ public class systemTest {
 			//System.out.println(tamano);
 			
 			
-			
-			RDP rdp = new RDP(datos.get("marcado"),datos.get("incidencia"),tiempo, oInvariantes);
+			Invariantes invariantes = new Invariantes(oInvariantes);
+			RDP rdp = new RDP(datos.get("marcado"),datos.get("incidencia"),tiempo, invariantes);
 
 			Politicas politicas = new Politicas();
 
@@ -63,7 +64,7 @@ public class systemTest {
 			
 			List<actorNuevo> actores = new ArrayList<>();
 
-			listaTransiciones = oArchivo.leerTxtFile("hilosPrueba");
+			listaTransiciones = oArchivo.leerTxtFile("hilos");
 
 			for(int i = 0;i<listaTransiciones.size();i++){
 				/*listaTransiciones.get(i).imprimirMatriz();

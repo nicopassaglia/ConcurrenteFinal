@@ -13,6 +13,7 @@ import Extra.Matriz;
 import Extra.actorNuevo;
 import Monitor.Colas;
 import Monitor.GestorDeMonitor;
+import Monitor.Invariantes;
 import Monitor.Politicas;
 import Monitor.RDP;
 import Monitor.Tiempo;
@@ -37,7 +38,8 @@ public class testTinvariante {
 		
 		
 		
-		RDP rdp = new RDP(datos.get("marcado"),datos.get("incidencia"),tiempo, oInvariantes);
+		Invariantes invariantes = new Invariantes(oInvariantes);
+		RDP rdp = new RDP(datos.get("marcado"),datos.get("incidencia"),tiempo, invariantes);
 
 		Politicas politicas = new Politicas();
 

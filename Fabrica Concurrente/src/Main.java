@@ -15,6 +15,7 @@ import Maquinas.Maquina_3;
 import Maquinas.Maquina_4;
 import Monitor.Colas;
 import Monitor.GestorDeMonitor;
+import Monitor.Invariantes;
 import Monitor.Politicas;
 import Monitor.RDP;
 import Monitor.Tiempo;
@@ -27,7 +28,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int cantidad_de_disparos = 0;
+		int cantidad_de_disparos = 1000;
 		String red="";
 		
 
@@ -74,8 +75,8 @@ public class Main {
 		//System.out.println(tamano);
 
 
-
-		RDP rdp = new RDP(datos.get("marcado"),datos.get("incidencia"),tiempo, oInvariantes);
+		Invariantes invariantes = new Invariantes(oInvariantes);
+		RDP rdp = new RDP(datos.get("marcado"),datos.get("incidencia"),tiempo, invariantes);
 
 		Politicas politicas = new Politicas();
 

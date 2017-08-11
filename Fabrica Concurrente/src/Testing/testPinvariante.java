@@ -15,6 +15,7 @@ import Extra.Matriz;
 import Extra.actorNuevo;
 import Monitor.Colas;
 import Monitor.GestorDeMonitor;
+import Monitor.Invariantes;
 import Monitor.Politicas;
 import Monitor.RDP;
 import Monitor.Tiempo;
@@ -35,7 +36,8 @@ public class testPinvariante {
 		int tamano = datos.get("incidencia")[0].length;
 		Semaphore mutex = new Semaphore(1,true);
 		Tiempo tiempo = new Tiempo(tamano,mutex,"Maquinas");
-		RDP rdp = new RDP(datos.get("marcado"),datos.get("incidencia"),tiempo, oInvariantes);
+		Invariantes invariantes = new Invariantes(oInvariantes);
+		RDP rdp = new RDP(datos.get("marcado"),datos.get("incidencia"),tiempo, invariantes);
 		int[][] incidenciaRDP = rdp.getIncidencia();
 		int[][] marcadoRDP = rdp.getMarcado();
 		Matriz incidencia = new Matriz(incidenciaRDP);
@@ -51,7 +53,7 @@ public class testPinvariante {
 
 		rdp.setMarcado(marcadoTemporal);
 		
-		assertFalse(rdp.comprobarPinvariante());
+		assertFalse(invariantes.comprobarPinvariante());
 
 	}
 	
@@ -65,7 +67,8 @@ public class testPinvariante {
 		int tamano = datos.get("incidencia")[0].length;
 		Semaphore mutex = new Semaphore(1,true);
 		Tiempo tiempo = new Tiempo(tamano,mutex,"Maquinas");
-		RDP rdp = new RDP(datos.get("marcado"),datos.get("incidencia"),tiempo, oInvariantes);
+		Invariantes invariantes = new Invariantes(oInvariantes);
+		RDP rdp = new RDP(datos.get("marcado"),datos.get("incidencia"),tiempo, invariantes);
 		int[][] incidenciaRDP = rdp.getIncidencia();
 		int[][] marcadoRDP = rdp.getMarcado();
 		Matriz incidencia = new Matriz(incidenciaRDP);
@@ -84,7 +87,7 @@ public class testPinvariante {
 		
 		rdp.setMarcado(marcado);
 		
-		assertTrue(rdp.comprobarPinvariante());
+		assertTrue(invariantes.comprobarPinvariante());
 
 	}
 
@@ -98,7 +101,8 @@ public class testPinvariante {
 		int tamano = datos.get("incidencia")[0].length;
 		Semaphore mutex = new Semaphore(1,true);
 		Tiempo tiempo = new Tiempo(tamano,mutex,"Maquinas");
-		RDP rdp = new RDP(datos.get("marcado"),datos.get("incidencia"),tiempo, oInvariantes);
+		Invariantes invariantes = new Invariantes(oInvariantes);
+		RDP rdp = new RDP(datos.get("marcado"),datos.get("incidencia"),tiempo, invariantes);
 		int[][] incidenciaRDP = rdp.getIncidencia();
 		int[][] marcadoRDP = rdp.getMarcado();
 		Matriz incidencia = new Matriz(incidenciaRDP);
@@ -112,7 +116,7 @@ public class testPinvariante {
 	
 		rdp.setMarcado(marcado);
 		
-		assertFalse(rdp.comprobarPinvariante());
+		assertFalse(invariantes.comprobarPinvariante());
 
 	}
 	@Test
@@ -125,7 +129,8 @@ public class testPinvariante {
 		int tamano = datos.get("incidencia")[0].length;
 		Semaphore mutex = new Semaphore(1,true);
 		Tiempo tiempo = new Tiempo(tamano,mutex,"Maquinas");
-		RDP rdp = new RDP(datos.get("marcado"),datos.get("incidencia"),tiempo, oInvariantes);
+		Invariantes invariantes = new Invariantes(oInvariantes);
+		RDP rdp = new RDP(datos.get("marcado"),datos.get("incidencia"),tiempo, invariantes);
 		int[][] incidenciaRDP = rdp.getIncidencia();
 		int[][] marcadoRDP = rdp.getMarcado();
 		Matriz incidencia = new Matriz(incidenciaRDP);
@@ -155,7 +160,7 @@ public class testPinvariante {
 	
 		rdp.setMarcado(marcado);
 		
-		assertTrue(rdp.comprobarPinvariante());
+		assertTrue(invariantes.comprobarPinvariante());
 
 	}
 }

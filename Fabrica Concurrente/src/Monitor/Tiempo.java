@@ -63,7 +63,7 @@ public class Tiempo {
 				return 2; //probando
 			}else{
 				long a = ahora-timeStamp;
-				System.out.println("ENTRE A LA CAMARA DE LOS SECRETOS, a= "+a+", alfa="+alfa);
+				System.out.println("Me voy a dormir a la cola, a= "+a+", alfa="+alfa);
 				return 0;
 			}
 			/*
