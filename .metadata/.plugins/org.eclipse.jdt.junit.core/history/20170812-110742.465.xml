@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="UnitTestColas" project="Fabrica Concurrente" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="Testing.UnitTestColas" time="1.176">
+    <testcase name="testColaDormidosNegativo" classname="Testing.UnitTestColas" time="0.061"/>
+    <testcase name="meterEnCola" classname="Testing.UnitTestColas" time="1.068"/>
+    <testcase name="testColaDormidos" classname="Testing.UnitTestColas" time="0.047"/>
+  </testsuite>
+</testrun>
